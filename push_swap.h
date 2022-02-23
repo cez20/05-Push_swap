@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cezmenji <cezmenji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:04:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/02/22 14:28:44 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/02/22 15:49:40 by cezmenji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "libft/libft.h"
+
+int main(int argc, char *argv[]);
 
 #endif
