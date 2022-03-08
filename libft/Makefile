@@ -6,7 +6,7 @@
 #    By: cezmenji <cezmenji@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/28 13:59:50 by cemenjiv          #+#    #+#              #
-#    Updated: 2022/02/22 19:57:51 by cezmenji         ###   ########.fr        #
+#    Updated: 2022/03/07 17:25:07 by cezmenji         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRCS			=	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c \
 					ft_strncmp.c ft_strnstr.c ft_substr.c ft_tolower.c ft_toupper.c\
 					ft_strjoin.c ft_strtrim.c ft_itoa.c ft_strmapi.c\
 					ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c\
-					ft_putnbr_fd.c ft_split.c
+					ft_putnbr_fd.c ft_split.c 
 
 OBJS			= $(SRCS:.c=.o)
 

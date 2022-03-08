@@ -6,13 +6,13 @@
 #    By: cezmenji <cezmenji@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/28 13:59:50 by cemenjiv          #+#    #+#              #
-#    Updated: 2022/02/22 20:16:41 by cezmenji         ###   ########.fr        #
+#    Updated: 2022/03/07 17:01:45 by cezmenji         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= push_swap  #nom de l'executable que l'on veut creer 
 
-SRCS			= push_swap.c  #Declaration de la variable SRCS (fichier sources) nom des fichiers .c a l'origine de mon programme 
+SRCS			= main.c utils.c  #Declaration de la variable SRCS (fichier sources) nom des fichiers .c a l'origine de mon programme 
 				 
 OBJS			= $(SRCS:.c=.o) #Declaration OBJS (objets). Tous les fichiers terminant par le suffixe .c vont devenir .o
 
