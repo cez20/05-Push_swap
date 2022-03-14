@@ -1,16 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dlst.c                                             :+:      :+:    :+:   */
+/*   dlist_creation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 15:07:01 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/10 13:19:55 by cemenjiv         ###   ########.fr       */
+/*   Created: 2022/03/14 15:36:43 by cemenjiv          #+#    #+#             */
+/*   Updated: 2022/03/14 15:51:57 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void    create_dlist (t_stack *stack_a, char **argv)
+{
+    t_dlist *temp;  //Creation de type d_list qui contient un int, *next, *prev, int position
+    char    **args; // Double pointeur 
+    int     i;
+    int     y;
+	//int 	j; //Example pour tester. 
+
+    i = 1;
+    y = 0;
+    check_duplicate(argv, 1); //Validation des arguments lorsqu'ils ne sont pas en double quote Ex: push_swap 1 4 5
+    while (argv[i]) // Tant qu'il y a des arguments. argv[i] equivaut au premier argument
+    {
+        args = ft_split(argv[i++], ' '); //Fait ft_split avec 1er argument seulement. Ex: push_swap "14 15 16". Args va devenir les 3 chiffres. Sinon, il va prendre chaque argument
+		//j = 0;
+		//while (args[j])
+		//{
+		//	printf("%s\n", args[j]);
+		//	j++;
+		//}
+        check_duplicate(args, 0); //Validation des chiffres lorsque les chiffres sont entre "double quote"
+		printf("Valider le duplicate\n");
+        while (args[y])
+        {
+			if (ft_isint(args[y]) == 1) // Je pourrais remplacer par ft_atol == 0 en prenant mon ft_atol. 
+                error();
+			printf("Valider le INT_MIN, INT_MAX\n");
+            temp = dlst_new(ft_atoi(args[y++])); // Cree un new node avec le chiffre donne 
+			printf("Number:%d node was created\n", temp->content);
+            dlst_add_back(&stack_a->head, temp);
+        }
+        stack_a->tail = dlst_last(stack_a->head);
+        while (y > 0 && args[--y])
+            free(args[y]);
+        free (args);
+        y = 0;   
+    }
+}
+
 
 void	dlst_add_back(t_dlist **head, t_dlist *new)
 {
