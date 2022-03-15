@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 15:45:01 by cezmenji          #+#    #+#             */
-/*   Updated: 2022/03/15 09:51:27 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/15 10:10:33 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	assign_pos(int len, int i, t_dlist *lst)
 	return (++len);
 }
 
-void    error(void)
+void	error(void)
 {
-    ft_putstr_fd("Error\n", STDERR_FILENO);
-    exit (EXIT_FAILURE);
+	ft_putstr_fd("Error\n", STDERR_FILENO);
+	exit (EXIT_FAILURE);
 }

@@ -6,27 +6,27 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 20:06:50 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/14 17:22:11 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/15 09:57:42 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    check_duplicate(char **argv, int i)
+void	check_duplicate(char **argv, int i)
 {
-    int y;
+	int	y;
 
-    while (argv[i])
-    {
-        y = i + 1;
-        while (argv[y])
-        {
-            if (ft_strcmp(argv[i], argv[y]) == 0)
-                error();
-            y++;
-        }
-        i++;
-    }
+	while (argv[i])
+	{
+		y = i + 1;
+		while (argv[y])
+		{
+			if (ft_strcmp(argv[i], argv[y]) == 0)
+				error();
+			y++;
+		}
+		i++;
+	}
 }
 
 int	ft_strcmp(const char *s1, const char *s2)
@@ -57,9 +57,9 @@ int	ft_isint(char *str)
 
 long	ft_atol(const char *str)
 {
-	int	    i;
-	int	    nb_neg;
-	long    number;
+	int		i;
+	int		nb_neg;
+	long	number;
 
 	i = 0;
 	nb_neg = 0;
