@@ -6,18 +6,11 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 15:45:01 by cezmenji          #+#    #+#             */
-/*   Updated: 2022/03/14 15:40:35 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/14 16:49:39 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void    error(void)
-{
-    ft_putstr_fd("Error\n", STDERR_FILENO);
-	printf("A letter, a number beyond INT_MIN/INT_MAX OR a duplicate has been entered\n");
-    exit (EXIT_FAILURE);
-}
 
 int	assign_pos(int len, int i, t_dlist *lst)
 {

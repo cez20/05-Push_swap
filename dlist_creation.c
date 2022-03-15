@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:36:43 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/14 15:51:57 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/14 17:19:38 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,32 @@
 
 void    create_dlist (t_stack *stack_a, char **argv)
 {
-    t_dlist *temp;  //Creation de type d_list qui contient un int, *next, *prev, int position
-    char    **args; // Double pointeur 
+    t_dlist *temp;  
+    char    **args; 
     int     i;
-    int     y;
-	//int 	j; //Example pour tester. 
+    int     j;
 
     i = 1;
-    y = 0;
-    check_duplicate(argv, 1); //Validation des arguments lorsqu'ils ne sont pas en double quote Ex: push_swap 1 4 5
-    while (argv[i]) // Tant qu'il y a des arguments. argv[i] equivaut au premier argument
+    j = 0;
+    check_duplicate(argv, 1); 
+    while (argv[i]) 
     {
-        args = ft_split(argv[i++], ' '); //Fait ft_split avec 1er argument seulement. Ex: push_swap "14 15 16". Args va devenir les 3 chiffres. Sinon, il va prendre chaque argument
-		//j = 0;
-		//while (args[j])
-		//{
-		//	printf("%s\n", args[j]);
-		//	j++;
-		//}
-        check_duplicate(args, 0); //Validation des chiffres lorsque les chiffres sont entre "double quote"
-		printf("Valider le duplicate\n");
-        while (args[y])
+        args = ft_split(argv[i++], ' '); 
+        check_duplicate(args, 0); 
+        while (args[j])
         {
-			if (ft_isint(args[y]) == 1) // Je pourrais remplacer par ft_atol == 0 en prenant mon ft_atol. 
+			if (ft_isint(args[j]) == 0) 
                 error();
-			printf("Valider le INT_MIN, INT_MAX\n");
-            temp = dlst_new(ft_atoi(args[y++])); // Cree un new node avec le chiffre donne 
-			printf("Number:%d node was created\n", temp->content);
+            temp = dlst_new(ft_atol(args[j++])); 
             dlst_add_back(&stack_a->head, temp);
         }
         stack_a->tail = dlst_last(stack_a->head);
-        while (y > 0 && args[--y])
-            free(args[y]);
+        while (j > 0 && args[--j])
+            free(args[j]);
         free (args);
-        y = 0;   
+        j = 0;   
     }
 }
-
 
 void	dlst_add_back(t_dlist **head, t_dlist *new)
 {
@@ -61,14 +50,12 @@ void	dlst_add_back(t_dlist **head, t_dlist *new)
 		temp = *head;
 		*head = new;
 		free(temp);
-		printf("%d\n", new->content);
 	}
 	else
 	{
 		temp = dlst_last(*head);
 		temp->next = new;
 		new->prev = temp;
-		printf("%d or %d is added at back of %d\n", new->content, temp->next->content, new->prev->content);
 	}
 }
 
