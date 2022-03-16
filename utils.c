@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 15:45:01 by cezmenji          #+#    #+#             */
-/*   Updated: 2022/03/15 10:10:33 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/16 13:15:48 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	assign_pos(int len, int i, t_dlist *lst)
 		big = temp;
 		while (temp)
 		{
-			if (small->content > temp->content && temp->pos == 0)
+			if (small->data > temp->data && temp->pos == 0)
 				small = temp;
-			if (big->content < temp->content && temp->pos == 0)
+			if (big->data < temp->data && temp->pos == 0)
 				big = temp;
 			temp = temp->next;
 		}
@@ -43,4 +43,18 @@ void	error(void)
 {
 	ft_putstr_fd("Error\n", STDERR_FILENO);
 	exit (EXIT_FAILURE);
+}
+
+void    print_dlist(t_dlist *head)
+{
+    int i;
+
+    i = 1;
+    while (head != NULL)
+    {
+        printf("%d is %d on top of linked list\n", head->data, i);
+        head = head->next;
+        i++;
+    }
+    printf("\n");
 }

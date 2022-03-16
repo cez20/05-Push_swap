@@ -1,35 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   dlist_maintenance.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/08 13:36:43 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/16 13:15:45 by cemenjiv         ###   ########.fr       */
+/*   Created: 2022/03/16 13:14:13 by cemenjiv          #+#    #+#             */
+/*   Updated: 2022/03/16 13:15:04 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int	dlst_len(t_dlist *lst)
 {
-	t_stacks	*stacks;
-	int			length;
+	int	len;
 
-	stacks = initialize_stacks();
-	if (argc > 1)
+	len = 0;
+	if (lst)
 	{
-		create_dlist(stacks->stack_a, argv);
-        print_dlist(stacks->stack_a->head);
-		length = dlst_len(stacks->stack_a->head);
-		assign_pos(length, 1, stacks->stack_a->head);
+		len++;
+		while (lst->next)
+		{
+			lst = lst->next;
+			len++;
+		}
 	}
-	clear_stacks(stacks);
-	return (0);
+	return (len);
 }
 
+void	dlst_clear(t_stack *stack)
+{	
+	t_dlist	*temp;
 
-
-
-
+	if (stack->head == NULL)
+		return ;
+	while (stack->head)
+	{
+		temp = stack->head->next;
+		free(stack->head);
+		stack->head = temp;
+	}
+}

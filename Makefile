@@ -6,14 +6,15 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/28 13:59:50 by cemenjiv          #+#    #+#              #
-#    Updated: 2022/03/14 15:47:22 by cemenjiv         ###   ########.fr        #
+#    Updated: 2022/03/16 13:16:43 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= push_swap  #nom de l'executable que l'on veut creer 
 
-SRCS			= main.c stacks.c args_validation.c dlist_creation.c utils.c#Declaration de la variable SRCS (fichier sources) nom des fichiers .c a l'origine de mon programme 
-				 
+SRCS			= main.c stacks.c args_validation.c dlist_creation.c utils.c \
+				  dlist_maintenance.c 
+				  
 OBJS			= $(SRCS:.c=.o) #Declaration OBJS (objets). Tous les fichiers terminant par le suffixe .c vont devenir .o
 
 CC				= gcc  #name of C compiler

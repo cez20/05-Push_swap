@@ -6,11 +6,40 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:36:43 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/15 10:21:37 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/16 13:15:25 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	create_dlist(t_stack *stack_a, char **argv)
+{
+	t_dlist	*temp;
+	char	**args;
+	int		i;
+	int		j;
+
+	i = 1;
+	j = 0;
+	check_duplicate(argv, 1);
+	while (argv[i])
+	{
+		args = ft_split(argv[i++], ' ');
+		check_duplicate(args, 0);
+		while (args[j])
+		{
+			if (ft_isint(args[j]) == 0)
+				error();
+			temp = dlst_new(ft_atol(args[j++]));
+			dlst_add_back(&stack_a->head, temp);
+		}
+		stack_a->tail = dlst_last(stack_a->head);
+		while (j > 0 && args[--j])
+			free(args[j]);
+		free (args);
+		j = 0;
+	}
+}
 
 void	dlst_add_back(t_dlist **head, t_dlist *new)
 {
@@ -52,24 +81,9 @@ t_dlist	*dlst_last(t_dlist *lst)
 	return (lst);
 }
 
-int	dlst_len(t_dlist *lst)
-{
-	int	len;
 
-	len = 0;
-	if (lst)
-	{
-		len++;
-		while (lst->next)
-		{
-			lst = lst->next;
-			len++;
-		}
-	}
-	return (len);
-}
 
-t_dlist	*dlst_new(int content)
+t_dlist	*dlst_new(int data)
 {
 	t_dlist	*list;
 
@@ -79,7 +93,7 @@ t_dlist	*dlst_new(int content)
 		ft_putstr_fd("Error: Dynamic allocation failed\n", 2);
 		exit(EXIT_FAILURE);
 	}
-	list->content = content;
+	list->data = data;  //change made here
 	list->next = NULL;
 	list->prev = NULL;
 	list->pos = 0;
