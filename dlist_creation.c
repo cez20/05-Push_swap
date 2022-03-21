@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:36:43 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/20 22:41:04 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/21 10:20:19 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ t_dlist	*dlst_new(int data)
 		ft_putstr_fd("Error: Dynamic allocation failed\n", 2);
 		exit(EXIT_FAILURE);
 	}
-	list->data = data;  //change made here
+	list->data = data;  
 	list->next = NULL;
 	list->prev = NULL;
 	list->pos = 0;
