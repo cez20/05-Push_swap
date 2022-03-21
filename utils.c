@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 15:45:01 by cezmenji          #+#    #+#             */
-/*   Updated: 2022/03/21 14:59:56 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/21 15:56:21 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	assign_pos(int len, int i, t_dlist *lst)
 		small->pos = i++;
 		big->pos = len--;
 	}
-	return (++len);
+	return (++len); // Pourquoi retourner un element s'il s'agit d'une copie et qu,il ne va dans aucun variable
 }
 
 void	error(void)

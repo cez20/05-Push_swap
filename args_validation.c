@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 20:06:50 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/21 14:52:58 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/21 15:03:37 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	check_if_int(char **str, int i)
 	while (str[i])
 	{
 		temp = ft_atol(str[i]);
-		printf("%ld\n", temp);
+		//printf("%ld\n", temp);
 		if (temp < INT_MIN || temp > INT_MAX || temp == 0)
 			error();
 		i++;
