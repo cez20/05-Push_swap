@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:04:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/20 22:42:28 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/21 14:56:20 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct s_stacks
 int			main(int argc, char **argv);
 void		create_dlist(t_stack *stack_a, char **argv);
 void		dlst_clear(t_stack *stack);
-void   		print_dlist(t_dlist *head);
+void		print_dlist(t_dlist *head);
 
 // *** STACKS.C ***
 t_stacks	*initialize_stacks(void);

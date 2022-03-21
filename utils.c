@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 15:45:01 by cezmenji          #+#    #+#             */
-/*   Updated: 2022/03/20 22:52:24 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/21 14:59:56 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,16 @@ void	error(void)
 	exit (EXIT_FAILURE);
 }
 
-void    print_dlist(t_dlist *head)
+void	print_dlist(t_dlist *head)
 {
-    int i;
+	int	i;
 
-    i = 1;
-    while (head != NULL)
-    {
-        printf("%d is %d position from the top of linked list\n", head->data, i);
-        head = head->next;
-        i++;
-    }
-    printf("\n");
+	i = 1;
+	while (head != NULL)
+	{
+		printf("%d is %d position from the top of linked list\n", head->data, i);
+		head = head->next;
+		i++;
+	}
+	printf("\n");
 }

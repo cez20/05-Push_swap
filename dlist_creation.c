@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:36:43 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/21 10:20:19 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/21 14:54:13 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	create_dlist(t_stack *stack_a, char **argv)
 	t_dlist	*temp;
 	char	**args;
 	int		i;
-	int 	j;
+	int		j;
 
 	i = 1;
 	j = 0;
@@ -34,7 +34,7 @@ void	create_dlist(t_stack *stack_a, char **argv)
 	}
 	if (i == 2)
 	{
-		while (j > 0 && args[--j]) 
+		while (j > 0 && args[--j])
 			free(args[j]);
 		free(args);
 	}
@@ -90,7 +90,7 @@ t_dlist	*dlst_new(int data)
 		ft_putstr_fd("Error: Dynamic allocation failed\n", 2);
 		exit(EXIT_FAILURE);
 	}
-	list->data = data;  
+	list->data = data;
 	list->next = NULL;
 	list->prev = NULL;
 	list->pos = 0;
