@@ -6,40 +6,58 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:36:43 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/16 13:15:25 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/20 20:03:06 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int		ft_strchr1(const char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == (char)c)
+			return (0);
+		i++;
+	}
+	if (s[i] == (char)c)
+		return (0);
+	return (1);
+}
 
 void	create_dlist(t_stack *stack_a, char **argv)
 {
 	t_dlist	*temp;
 	char	**args;
 	int		i;
-	int		j;
+	int 	j;
 
 	i = 1;
 	j = 0;
-	check_duplicate(argv, 1);
-	while (argv[i])
+	args = &argv[i];
+	if (ft_strchr1(argv[i], ' ') == 0)
+		args = ft_split(argv[i], ' ');
+	int_validation(args);
+	while (args[j])
 	{
-		args = ft_split(argv[i++], ' ');
-		check_duplicate(args, 0);
-		while (args[j])
-		{
-			if (ft_isint(args[j]) == 0)
-				error();
-			temp = dlst_new(ft_atol(args[j++]));
-			dlst_add_back(&stack_a->head, temp);
-		}
+		temp = dlst_new(ft_atoi(args[j++]));
+		dlst_add_back(&stack_a->head, temp);
 		stack_a->tail = dlst_last(stack_a->head);
-		while (j > 0 && args[--j])
-			free(args[j]);
-		free (args);
-		j = 0;
 	}
+	while (j > 0 && args[--j]) // This part is only necessary if ft_split was used. how to distinguish args from malloc one or unmalloc
+		free(args[j]);
+	free(args);
 }
+
+void	int_validation(char **args)
+{
+	check_duplicate(args, 0);
+	check_if_int(args, 0);
+}
+
 
 void	dlst_add_back(t_dlist **head, t_dlist *new)
 {

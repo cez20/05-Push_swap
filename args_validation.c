@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 20:06:50 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/15 09:57:42 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/16 16:52:38 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,18 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (0);
 }
 
-int	ft_isint(char *str)
+void	check_if_int(char **str, int i)
 {
-	int		i;
 	long	temp;
 
-	i = 0;
-	temp = ft_atol(str);
-	if (temp < INT_MIN || temp > INT_MAX || temp == 0)
-		return (0);
-	return (1);
+	while (str[i])
+	{
+		temp = ft_atol(str[i]);
+		//printf("%ld\n", temp);
+		if (temp < INT_MIN || temp > INT_MAX || temp == 0)
+			error();
+		i++;
+	}
 }
 
 long	ft_atol(const char *str)
