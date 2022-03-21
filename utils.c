@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 15:45:01 by cezmenji          #+#    #+#             */
-/*   Updated: 2022/03/16 13:15:48 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/20 22:52:24 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void    print_dlist(t_dlist *head)
     i = 1;
     while (head != NULL)
     {
-        printf("%d is %d on top of linked list\n", head->data, i);
+        printf("%d is %d position from the top of linked list\n", head->data, i);
         head = head->next;
         i++;
     }
