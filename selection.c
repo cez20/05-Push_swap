@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 15:24:18 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/21 17:18:05 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/22 11:49:35 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,43 +16,40 @@ void	selectionsort(t_stacks *s, int len)
 {
 	int	small; //chiffre small
 	int	big; // chiffre big
-
-	if (is_sorted(s->stack_a->head) != true) //Si la reponse est false ou differente de true
-	{	
-		while (dlst_len(s->stack_a->head) > 3) // Tant que la longueur de la liste est plus grande que 3
+	
+	while (dlst_len(s->stack_a->head) > 3) // Tant que la longueur de la liste est plus grande que 3
+	{
+		small = smallest_num(s->stack_a);
+		if (is_in_order(s->stack_a->tail, 1) != dlst_len(s->stack_a->head)) // Si order est diffrent de la longueur de la linked list.
 		{
-			small = smallest_num(s->stack_a);
-			if (is_in_order(s->stack_a->tail, 1) != dlst_len(s->stack_a->head)) // Si order est diffrent de la longueur de la linked list.
-			{
-				while (s->stack_a->head->pos != small) //Tant et aussi longtemps que la position de la head est different du chiffre le plus petit
-					direction(s->stack_a, len, small); // Soit fait des rotate ou de reverse rotate
-			}
-			push(s->stack_a, s->stack_b, "pb"); //Pousse le premier element de la stack_a vers la stack_b
+			while (s->stack_a->head->pos != small) //Tant et aussi longtemps que la position de la head est different du chiffre le plus petit
+				direction(s->stack_a, len, small); // Soit fait des rotate ou de reverse rotate
 		}
-		big = biggest_num(s->stack_a); // big devient le chiffre le plus element de la liste. 
-		if (s->stack_a->head->pos == big) //si la pos de la head est le chiffre le plus gros, faire RA
-			rotate(s->stack_a, "ra");
-		else if (s->stack_a->head->next->pos == big) // si l'element apres le head est la plus gros, faire RRA
-			reverse_rotate(s->stack_a, "rra");
-		if (is_in_order(s->stack_a->tail, 1) != dlst_len(s->stack_a->head)) // si la position de la tail est differente de la longueur de la liste.n
-			swap(s->stack_a, "sa"); //swap les 2 premiers elements de la stack_a
-		while (s->stack_b->head != NULL)
-			push(s->stack_b, s->stack_a, "pa");
+		push(s->stack_a, s->stack_b, "pb"); //Pousse le premier element de la stack_a vers la stack_b
 	}
+	big = biggest_num(s->stack_a); // big devient le chiffre le plus element de la liste. 
+	if (s->stack_a->head->pos == big) //si la pos de la head est le chiffre le plus gros, faire RA
+		rotate(s->stack_a, "ra");
+	else if (s->stack_a->head->next->pos == big) // si l'element apres le head est la plus gros, faire RRA
+		reverse_rotate(s->stack_a, "rra");
+	if (is_in_order(s->stack_a->tail, 1) != dlst_len(s->stack_a->head)) // si la position de la tail est differente de la longueur de la liste.n
+		swap(s->stack_a, "sa"); //swap les 2 premiers elements de la stack_a
+	while (s->stack_b->head != NULL)
+		push(s->stack_b, s->stack_a, "pa");
 }
 
 int	is_sorted(t_dlist *lst) // on prend le head de la linked list 
 {
 	if (lst->pos != 1) // Si la position du premier element de la liste est different de 1
-		return (false); //retourne false.
+		return (0); //retourne false.
 	while (lst->next) //Tant que lst->next est different de NULL. 
 	{
 		if (lst->data < lst->next->data) // Si le chiffre du node actuel est plus petite que celui du node suivante
 			lst = lst->next; // On saute au prochain node
 		else
-			return (false);
+			return (0);
 	}
-	return (true);
+	return (1);
 }
 
 int	is_in_order(t_dlist *lst, int i) // Prend en parametre le tail de la dlist et le chiffre 1
@@ -62,7 +59,7 @@ int	is_in_order(t_dlist *lst, int i) // Prend en parametre le tail de la dlist e
 	order = 0;
 	if (lst && lst->prev) //Si tail de la dlist et le node anterieur est different de NULL.
 	{
-		if (i == -1) //Si i = -1
+		if (i == -1) //Si i = -1. Pourquoi i serait egal a -1??
 		{
 			if (lst->pos != 1) // la position du tail est differente de 1
 				return (order);
