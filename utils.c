@@ -6,37 +6,34 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 15:45:01 by cezmenji          #+#    #+#             */
-/*   Updated: 2022/03/22 11:38:37 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/23 17:54:01 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	assign_pos(int len, int i, t_dlist *lst)
+void	positioning(int len, t_dlist *lst)
 {
 	t_dlist	*temp;
-	t_dlist	*small;
-	t_dlist	*big;
+	t_dlist	*smallest;
+	int		pos;
 
-	while (len >= i)
+	pos = 1;
+	while (pos <= len)
 	{
 		temp = lst;
 		while (temp->pos != 0)
 			temp = temp->next;
-		small = temp;
-		big = temp;
-		while (temp)
+		smallest = temp;
+		while (temp != NULL)
 		{
-			if (small->data > temp->data && temp->pos == 0)
-				small = temp;
-			if (big->data < temp->data && temp->pos == 0)
-				big = temp;
+			if (smallest->data > temp->data && temp->pos == 0)
+				smallest = temp;
 			temp = temp->next;
 		}
-		small->pos = i++;
-		big->pos = len--;
+		smallest->pos = pos;
+		pos++;
 	}
-	return (++len); // Pourquoi retourner un element s'il s'agit d'une copie et qu,il ne va dans aucun variable
 }
 
 void	error(void)

@@ -6,13 +6,13 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:36:43 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/21 14:54:13 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/23 15:54:45 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	create_dlist(t_stack *stack_a, char **argv)
+void	dlist_creation(t_stack *stack_a, char **argv)
 {
 	t_dlist	*temp;
 	char	**args;
@@ -24,14 +24,17 @@ void	create_dlist(t_stack *stack_a, char **argv)
 	args = &argv[i];
 	if (ft_strchr1(argv[i], ' ') == 0)
 		args = ft_split(argv[i++], ' ');
-	check_duplicate(args, 0);
-	check_if_int(args, 0);
 	while (args[j])
 	{
 		temp = dlst_new(ft_atoi(args[j++]));
 		dlst_add_back(&stack_a->head, temp);
-		stack_a->tail = dlst_last(stack_a->head);
 	}
+	stack_a->tail = dlst_last(stack_a->head);
+	free_args(args, i, j);
+}
+
+void	free_args(char **args, int i, int j)
+{
 	if (i == 2)
 	{
 		while (j > 0 && args[--j])
@@ -87,7 +90,7 @@ t_dlist	*dlst_new(int data)
 	list = malloc(sizeof(*list));
 	if (!list)
 	{
-		ft_putstr_fd("Error: Dynamic allocation failed\n", 2);
+		ft_putstr_fd("Malloc failed\n", 2);
 		exit(EXIT_FAILURE);
 	}
 	list->data = data;

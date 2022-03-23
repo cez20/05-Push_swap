@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:36:43 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/22 11:46:48 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/23 17:03:52 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,25 @@
 int	main(int argc, char **argv)
 {
 	t_stacks	*stacks;
-	int			length;
+	int 		length;
 
-	stacks = initialize_stacks();
 	if (argc > 1)
 	{
-		create_dlist(stacks->stack_a, argv);
+		int_validation(argv);
+		stacks = initialize_stacks();
+		dlist_creation(stacks->stack_a, argv);
 		//print_dlist(stacks->stack_a->head);
 		length = dlst_len(stacks->stack_a->head);
-		assign_pos(length, 1, stacks->stack_a->head);
+		positioning(length, stacks->stack_a->head);
 		if (is_sorted(stacks->stack_a->head) == 1)
-			return (0);
-		if (length < 30)
-			selectionsort(stacks, length);
-		//else
-			//sort_radix(stacks->stack_a, stacks->stack_b, length);
+		 	return (0);
+		if (length <= 3)
+		 	simple_sort(stacks);
+		// if (length > 3 && length < 6)
+		// 	selection_sort(stacks, length);
+		clear_stacks(stacks);
 	}
-	clear_stacks(stacks);
-	return (0);
+	//return (0);
 }
 
 

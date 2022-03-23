@@ -6,11 +6,22 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 20:06:50 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/21 15:03:37 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/23 12:33:06 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	int_validation (char **argv)
+{
+	char	**args;
+	
+	args = &argv[1];
+	if (ft_strchr1(argv[1], ' ') == 0)
+		args = ft_split(argv[1], ' ');
+	check_duplicate(args, 0);
+	check_if_int(args, 0);
+}
 
 void	check_duplicate(char **argv, int i)
 {
