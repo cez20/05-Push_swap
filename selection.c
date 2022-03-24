@@ -6,11 +6,12 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 15:24:18 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/23 17:45:14 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/24 12:48:06 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
 
 /*void	selection_sort(t_stacks *s, int length)
 {
@@ -27,7 +28,7 @@ void	simple_sort(t_stacks *s)
 {
 	int	max_pos; 
 
-	max_pos = biggest_num(s->stack_a); // big devient le chiffre le plus element de la liste. 
+	max_pos = biggest_nb(s->stack_a); // big devient le chiffre le plus element de la liste. 
 	if (s->stack_a->head->pos == max_pos) //si la pos de la head est le chiffre le plus gros, faire RA et le pousser en dernier 
 		rotate_a(s->stack_a);
 	else if (s->stack_a->head->next->pos == max_pos) // si l'element apres le head est la plus gros, faire RRA
@@ -50,18 +51,18 @@ int	is_sorted(t_dlist *lst) // on prend le head de la linked list
 	return (1);
 }
 
-int	biggest_num(t_stack *stack)// prend en parametre la stack_a
+int	biggest_nb(t_stack *stack)
 {
-	t_dlist	*temp; // 
+	t_dlist	*temp;
 	int		big;
 
-	temp = stack->head; //temp devient le node head
-	big = stack->head->pos; // big devient le stack->head->pos 
-	while (temp) // temp et aussi longtemps que temp n;est pas NULL.
+	temp = stack->head;
+	big = stack->head->pos;
+	while (temp)
 	{
-		if (big < temp->pos) // si big est plus petit que la position temporaire 
-			big = temp->pos; // big prend la valeur du node pos ou il se trouve. 
-		temp = temp->next; //temp devient le prochain node. 
+		if (big < temp->pos)
+			big = temp->pos;
+		temp = temp->next;
 	}
-	return (big); //retourne le chiffre le plus eleve
+	return (big);
 }

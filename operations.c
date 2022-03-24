@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:27:32 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/23 17:53:39 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/24 12:43:44 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ void	swap_a(t_stack *stack)
 		stack->head = temp;
 		if (stack->tail->data == stack->head->data)
 			stack->tail = stack->head->next;
-		ft_putstr_fd("sa", 1);
-		ft_putstr_fd("\n", 1);
+		write (1, "sa\n", 3);
 	}
 }
 
@@ -62,44 +61,6 @@ void	reverse_rotate_a(t_stack *stack)
 		stack->head->prev = stack->tail; //le stack->head->prev devient le tail car tial 1er element de la liste.
 		stack->head = stack->tail; // le head devient le tail. 
 		stack->tail = temp; // le nouveau tail est l'element anterieur a l'ancien tail. 
-		ft_putstr_fd("rra", 1); //affiche rra
-		ft_putstr_fd("\n", 1); //affiche saut de ligne.  
+		write (1, "rra\n", 4); 
 	}
-}
-
-void	push(t_stack *src, t_stack *dest, char *str)
-{
-	if (src->head) // if stack->head est different de NULL.
-	{
-		push1(src, dest);
-		ft_putstr_fd(str, 1); //affiche pb pour push to stack b
-		ft_putstr_fd("\n", 1); //affiche un saut de ligne. 
-	}
-}
-
-void	push1(t_stack *src, t_stack *dest)
-{
-	t_dlist		*temp;
-
-	temp = NULL;
-	if (src->head->next) //if src->head->next est different de NULL
-	{
-		temp = src->head->next; //temp devient prochain node 
-		temp->prev = NULL; //temp->prev du 2e node devient NULL.
-	}
-	if (dest->tail == NULL) //si la dest->tail est egal a NULL.
-	{
-		src->head->next = NULL; // le next du head devient NULL.
-		dest->tail = src->head; // dest->tail devient le head de la stack a, car il a ete push sur la stack_b
-	}
-	else
-	{
-		src->head->next = dest->head; // src->head->next pointe vers la dest->head qui est deja en place
-		dest->head->prev = src->head; // le prev de l'element en place devient l'element qu'on pousse.
-	}
-	dest->head = src->head; //dest->head devient le premier element de la stack_a
-	dest->head->prev = NULL; //l'element prev de la head est NULL, car il s'agit de la head. 
-	src->head = temp; // devient l'element suivant sur la stack_a 
-	if (src->head == NULL) // Si le head de la stack_a est NULL.
-		src->tail = NULL; // tail est NULL. 
 }

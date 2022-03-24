@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:04:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/23 15:56:05 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/24 12:47:44 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,19 +73,14 @@ void		error(void);
 
 // *** SELECTION.C ***
 void	simple_sort(t_stacks *s);
-//void	selectionsort(t_stacks *s, int len);
 int		is_sorted(t_dlist *lst);
 int		is_in_order(t_dlist *lst, int i);
-int		smallest_num(t_stack *stack);
-int		biggest_num(t_stack *stack);
-void	direction(t_stack *stack, int len, int small);
+int		biggest_nb(t_stack *stack);
 
 // *** OPERATIONS.C ***
 void	swap_a(t_stack *stack);
 void	rotate_a(t_stack *stack);
 void	reverse_rotate_a(t_stack *stack);
-void	push(t_stack *src, t_stack *dest, char *str);
-void	push1(t_stack *src, t_stack *dest);
 
 
 #endif
