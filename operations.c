@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:27:32 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/24 12:43:44 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/24 14:20:46 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,41 @@ void	reverse_rotate_a(t_stack *stack)
 		stack->tail = temp; // le nouveau tail est l'element anterieur a l'ancien tail. 
 		write (1, "rra\n", 4); 
 	}
+}
+
+void	push(t_stack *src, t_stack *dest, char *str)
+{
+	if (src->head)
+	{
+		push1(src, dest);
+		ft_putstr_fd(str, 1);
+		ft_putstr_fd("\n", 1);
+	}
+}
+
+void	push1(t_stack *src, t_stack *dest)
+{
+	t_dlist		*temp;
+
+	temp = NULL;
+	if (src->head->next)
+	{
+		temp = src->head->next;
+		temp->prev = NULL;
+	}
+	if (dest->tail == NULL)
+	{
+		src->head->next = NULL;
+		dest->tail = src->head;
+	}
+	else
+	{
+		src->head->next = dest->head;
+		dest->head->prev = src->head;
+	}
+	dest->head = src->head;
+	dest->head->prev = NULL;
+	src->head = temp;
+	if (src->head == NULL)
+		src->tail = NULL;
 }
