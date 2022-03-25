@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:27:32 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/24 14:20:46 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/25 14:23:16 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,39 +65,41 @@ void	reverse_rotate_a(t_stack *stack)
 	}
 }
 
-void	push(t_stack *src, t_stack *dest, char *str)
+void	push_a(t_stack *stack_b, t_stack *stack_a)
 {
-	if (src->head)
+	t_dlist	*temp;
+	
+	temp = stack_a->head;
+	if(stack_b->head != NULL) 
 	{
-		push1(src, dest);
-		ft_putstr_fd(str, 1);
-		ft_putstr_fd("\n", 1);
+		stack_a->head->prev = stack_b->head;
+		stack_a->head = stack_b->head;
+		stack_b->head = stack_a->head->next;
+		stack_a->head->next = temp;
+		stack_a->head->prev = NULL;
 	}
+	write(1, "pa\n", 3);
 }
 
-void	push1(t_stack *src, t_stack *dest)
+void	push_b(t_stack *stack_a, t_stack *stack_b)
 {
-	t_dlist		*temp;
-
-	temp = NULL;
-	if (src->head->next)
+	t_dlist	*temp;
+	
+	temp = stack_a->head->next;
+	if (!stack_b->head)
 	{
-		temp = src->head->next;
-		temp->prev = NULL;
-	}
-	if (dest->tail == NULL)
-	{
-		src->head->next = NULL;
-		dest->tail = src->head;
+		stack_a->head->next = NULL;
+		stack_b->head = stack_a->head;
+		stack_b->head->next = NULL;
+		stack_b->tail = stack_b->head;
 	}
 	else
 	{
-		src->head->next = dest->head;
-		dest->head->prev = src->head;
+		stack_a->head->next = stack_b->head;
+		stack_b->head = stack_a->head;
 	}
-	dest->head = src->head;
-	dest->head->prev = NULL;
-	src->head = temp;
-	if (src->head == NULL)
-		src->tail = NULL;
+	stack_a->head = temp;
+	stack_a->head->prev = NULL;
+	stack_b->head->prev = NULL;
+	write(1, "pb\n", 3);
 }

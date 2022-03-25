@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 15:24:18 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/24 14:59:49 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/25 16:03:35 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,27 @@
 void	selection_sort(t_stacks *s, int len)
 {
 	int 	small;
-	int 	place;
+	int 	nb_location;
 	
 	while (len > 3)
 	{
 		small = smallest_nb(s->stack_a);
-		place = which_half(s->stack_a, small);
+		nb_location = which_half(s->stack_a, small);
 		while(s->stack_a->head->pos != small)
 		{
-			if (place <= (len / 2))
+			if (nb_location <= (len / 2))
 				rotate_a(s->stack_a);
-			else if(place >= (len / 2))
+			else if(nb_location >= (len / 2))
 				reverse_rotate_a(s->stack_a);
+			if (is_sorted(s->stack_a->head) == 1)
+		 		return;
 		}
-		push(s->stack_a, s->stack_b, "pb");
+		push_b(s->stack_a, s->stack_b);
 		len--;
 	}
 	simple_sort(s);
+	while (s->stack_b->head != NULL)
+		push_a(s->stack_b, s->stack_a);
 }
 
 int which_half(t_stack *stack, int small)
@@ -51,14 +55,16 @@ int which_half(t_stack *stack, int small)
 
 void	simple_sort(t_stacks *s)
 {
-	int	max_pos; 
+	int	big;
+	int small;
 
-	max_pos = biggest_nb(s->stack_a); // big devient le chiffre le plus element de la liste. 
-	if (s->stack_a->head->pos == max_pos) //si la pos de la head est le chiffre le plus gros, faire RA et le pousser en dernier 
+	small = smallest_nb(s->stack_a); 
+	big = biggest_nb(s->stack_a); // big devient le chiffre le plus element de la liste. 
+	if (s->stack_a->head->pos == big) //si la pos de la head est le chiffre le plus gros, faire RA et le pousser en dernier 
 		rotate_a(s->stack_a);
-	else if (s->stack_a->head->next->pos == max_pos) // si l'element apres le head est la plus gros, faire RRA
+	else if (s->stack_a->head->next->pos == big) // si l'element apres le head est la plus gros, faire RRA
 		reverse_rotate_a(s->stack_a);
-	if (s->stack_a->head->next->pos == 1 && s->stack_a->tail->pos == max_pos) //Ca ne marche pas. 
+	if (s->stack_a->head->next->pos == small && s->stack_a->tail->pos == big) 
 		swap_a(s->stack_a); 
 }
 
