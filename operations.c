@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:27:32 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/28 20:19:01 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/29 00:17:21 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	rotate_b(t_stack *stack)
 		stack->tail->next = stack->head;  // stack->tail->next qui est normalement a NULL pointe vers le head qui est maintenant dernier
 		stack->tail = stack->head; // stack->tail (le tail) devient le head qui est le dernier elements
 		stack->head = temp; //le nouveau head devient l'element qui etaitn initalement le 2e
-		write (1, "ra\n", 3);
+		write (1, "rb\n", 3);
 	}
 }
 
