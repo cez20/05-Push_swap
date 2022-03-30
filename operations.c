@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:27:32 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/29 00:17:21 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/30 14:44:52 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,22 @@ void	reverse_rotate_a(t_stack *stack)
 		stack->head = stack->tail; // le head devient le tail. 
 		stack->tail = temp; // le nouveau tail est l'element anterieur a l'ancien tail. 
 		write (1, "rra\n", 4); 
+	}
+}
+
+void	reverse_rotate_b(t_stack *stack)
+{
+	t_dlist	*temp;
+
+	if (stack->head != stack->tail && stack->head && stack->tail) //Si stack->head et stack->tail sont differents? et que chaque element n'est pas NULL.
+	{
+		temp = stack->tail->prev; //temp devient le node avant le stack->tail
+		temp->next = NULL; // le temp->next va pointer vers NULL maintenant qu'il devient le dernier element
+		stack->tail->next = stack->head; //le stack->tail->next qui est normalement a NULL devient le stack->head
+		stack->head->prev = stack->tail; //le stack->head->prev devient le tail car tial 1er element de la liste.
+		stack->head = stack->tail; // le head devient le tail. 
+		stack->tail = temp; // le nouveau tail est l'element anterieur a l'ancien tail. 
+		write (1, "rrb\n", 4); 
 	}
 }
 

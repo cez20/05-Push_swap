@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:04:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/28 20:18:25 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/30 17:18:06 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void		error(void);
 
 // *** QUICK_SORT.C ***
 void	quick_sort(t_stacks *s, int len);
+void	median_as_tail (t_stack *stacks, int median, int location);
 
 // *** SELECTION.C ***
 void	simple_sort(t_stacks *s);
@@ -81,7 +82,6 @@ void	push_a(t_stack *stack_b, t_stack *stack_a);
 void	selection_sort(t_stacks *s, int len);
 int 	which_half(t_stack *stack, int small);
 int		is_sorted(t_dlist *lst);
-int		is_in_order(t_dlist *lst, int i);
 int		biggest_nb(t_stack *stack);
 int		smallest_nb(t_stack *stack);
 
@@ -91,6 +91,7 @@ void	swap_b(t_stack *stack);
 void	rotate_a(t_stack *stack);
 void	rotate_b(t_stack *stack);
 void	reverse_rotate_a(t_stack *stack);
+void	reverse_rotate_b(t_stack *stack);
 void	push_a(t_stack *stack_b, t_stack *stack_a);
 void	push_b(t_stack *stack_a, t_stack *stack_b);
 
