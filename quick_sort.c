@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 18:55:12 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/31 19:35:57 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/04 14:14:56 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	quick_sort(t_stacks *s)
 		{
 			if (s->stack_a->head->pos <= median)
 				push_b(s->stack_a, s->stack_b);
-			else if ((s->stack_a->head->pos > median) && (s->stack_b->head->data < s->stack_b->tail->data))
-				rotate_both (s->stack_a, s->stack_b);
+			//else if ((s->stack_a->head->pos > median) && (s->stack_b->head->data < s->stack_b->tail->data))
+				//rotate_both (s->stack_a, s->stack_b);
 			else if (s->stack_a->head->pos > median)
 				rotate_a(s->stack_a);
 			if (dlst_len(s->stack_b->head) >= 2)
@@ -54,24 +54,3 @@ void	quick_sort(t_stacks *s)
 	while (s->stack_b->head != NULL)
 		push_a(s->stack_b, s->stack_a);
 }
-
-
-/*void	quick_sort(t_stacks *s, int len)
-{
-	(void)len;
-\
-
-	push_b(s->stack_a, s->stack_b);
-	push_b(s->stack_a, s->stack_b);
-	rotate_both (s->stack_a, s->stack_b);
-	while (s->stack_a->head)
-	{
-		printf("%d\n", s->stack_a->head->data);
-		s->stack_a->head = s->stack_a->head->next;
-	}
-	while (s->stack_b->head)
-	{
-		printf("%d\n", s->stack_b->head->data);
-		s->stack_b->head = s->stack_b->head->next;
-	}
-}*/

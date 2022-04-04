@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:04:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/31 19:22:38 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/04 14:21:33 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_stacks	*initialize_stacks(void);
 void		clear_stacks(t_stacks *stacks);
 
 // *** ARGS_VALIDATION.C ***
-void		int_validation (char **argv);
+void		int_validation(char **argv);
 void		check_duplicate(char **argv, int i);
 long		ft_atol(const char *str);
 void		check_if_int(char **str, int i);
@@ -72,29 +72,29 @@ void		positioning(int len, t_dlist *lst);
 void		error(void);
 
 // *** QUICK_SORT.C ***
-void	quick_sort(t_stacks *s);
+void		quick_sort(t_stacks *s);
 
 // *** SELECTION.C ***
-void	simple_sort(t_stacks *s);
-void	push_b(t_stack *stack_a, t_stack *stack_b);
-void	push_a(t_stack *stack_b, t_stack *stack_a);
-void	selection_sort(t_stacks *s, int len);
-int 	which_half(t_stack *stack, int small);
-int		is_sorted(t_dlist *lst);
-int		biggest_nb(t_stack *stack);
-int		smallest_nb(t_stack *stack);
+void		simple_sort(t_stacks *s);
+void		push_b(t_stack *stack_a, t_stack *stack_b);
+void		push_a(t_stack *stack_b, t_stack *stack_a);
+void		selection_sort(t_stacks *s, int len);
+int			which_half(t_stack *stack, int small);
+int			is_sorted(t_dlist *lst);
+int			biggest_nb(t_stack *stack);
+int			smallest_nb(t_stack *stack);
 
 // *** OPERATIONS.C ***
-void	swap_a(t_stack *stack);
-void	swap_b(t_stack *stack);
-void	rotate_a(t_stack *stack);
-void	rotate_b(t_stack *stack);
-void	rotate_a1(t_stack *stack);
-void	rotate_b1(t_stack *stack);
-void	rotate_both(t_stack *stack_a, t_stack *stack_b);
-void	reverse_rotate_a(t_stack *stack);
-void	reverse_rotate_b(t_stack *stack);
-void	push_a(t_stack *stack_b, t_stack *stack_a);
-void	push_b(t_stack *stack_a, t_stack *stack_b);
+void		swap_a(t_stack *stack);
+void		swap_b(t_stack *stack);
+void		rotate_a(t_stack *stack);
+void		rotate_b(t_stack *stack);
+void		rotate_a1(t_stack *stack);// A enlever au besoin
+void		rotate_b1(t_stack *stack); // a enlever au besoin 
+void		rotate_both(t_stack *stack_a, t_stack *stack_b); // A enlever au besoin
+void		reverse_rotate_a(t_stack *stack);
+void		reverse_rotate_b(t_stack *stack);
+void		push_a(t_stack *stack_b, t_stack *stack_a);
+void		push_b(t_stack *stack_a, t_stack *stack_b);
 
 #endif

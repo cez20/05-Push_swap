@@ -6,16 +6,16 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 20:06:50 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/23 12:33:06 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/04 15:39:49 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	int_validation (char **argv)
+void	int_validation(char **argv)
 {
 	char	**args;
-	
+
 	args = &argv[1];
 	if (ft_strchr1(argv[1], ' ') == 0)
 		args = ft_split(argv[1], ' ');
@@ -43,11 +43,12 @@ void	check_duplicate(char **argv, int i)
 void	check_if_int(char **str, int i)
 {
 	long	temp;
+	int 	j;
 
+	j = 0;
 	while (str[i])
 	{
 		temp = ft_atol(str[i]);
-		//printf("%ld\n", temp);
 		if (temp < INT_MIN || temp > INT_MAX || temp == 0)
 			error();
 		i++;
