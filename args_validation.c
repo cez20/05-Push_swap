@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 20:06:50 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/23 12:33:06 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/04 16:33:45 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,18 @@ void	check_duplicate(char **argv, int i)
 void	check_if_int(char **str, int i)
 {
 	long	temp;
+	int		j;
 
+	j = 0;
 	while (str[i])
 	{
 		temp = ft_atol(str[i]);
 		//printf("%ld\n", temp);
-		if (temp < INT_MIN || temp > INT_MAX || temp == 0)
+		if (temp < INT_MIN || temp > INT_MAX )
+			error();
+		if (str[i][j] < 43 || str[i][j] > 57)
+			error();
+		if (str[i][j] == ',' || str[i][j] == '.' || str[i][j] == '/')
 			error();
 		i++;
 	}
