@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 20:06:50 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/04 15:39:49 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/04 16:35:14 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,11 @@ void	check_if_int(char **str, int i)
 	while (str[i])
 	{
 		temp = ft_atol(str[i]);
-		if (temp < INT_MIN || temp > INT_MAX || temp == 0)
+		if (temp < INT_MIN || temp > INT_MAX )
+			error();
+		if (str[i][j] < 43 || str[i][j] > 57)
+			error();
+		if (str[i][j] == ',' || str[i][j] == '.' || str[i][j] == '/')
 			error();
 		i++;
 	}

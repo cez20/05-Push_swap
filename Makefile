@@ -6,14 +6,15 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/28 13:59:50 by cemenjiv          #+#    #+#              #
-#    Updated: 2022/03/28 19:16:19 by cemenjiv         ###   ########.fr        #
+#    Updated: 2022/04/04 17:19:38 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= push_swap  #nom de l'executable que l'on veut creer 
 
 SRCS			= main.c stacks.c args_validation.c dlist_creation.c utils.c \
-				  dlist_maintenance.c selection.c operations.c quick_sort.c
+				  dlist_maintenance.c selection.c operations.c quick_sort.c \
+				  quick_sort1.c
 				  
 OBJS			= $(SRCS:.c=.o) #Declaration OBJS (objets). Tous les fichiers terminant par le suffixe .c vont devenir .o
 

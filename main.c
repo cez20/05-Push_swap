@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:36:43 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/04 14:17:54 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/04 17:22:49 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,14 @@ int	main(int argc, char **argv)
 		positioning(length, stacks->stack_a->head);
 		if (is_sorted(stacks->stack_a->head) == 1)
 			return (0);
-		if (length <= 3)
-			simple_sort(stacks);
-		if (length > 3 && length < 6)
+		//if (length <= 3)
+			//simple_sort(stacks);
+		if (length <= 5)
 			selection_sort(stacks, length);
-		if (length > 3)
-			quick_sort(stacks);
+		//if (length > 5)
+			//quick_sort(stacks);
+		if (length > 5)
+			quick_sort1(stacks, length);
 		clear_stacks(stacks);
 	}
 	return (0);

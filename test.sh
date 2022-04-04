@@ -47,9 +47,19 @@ printf "\033[1;31mThis is the test with argument other than INT (letter) in a st
 ./push_swap "10 20 YO 40 50"
 printf "\033[1;31mThis is the test with argument other than INT (letter) in a string : \033[0;32m'10 20 ? 40 50'\033[0m\n"
 ./push_swap "10 20 ? 40 50"
+printf "\033[1;31mThis is the test with number '0' in a string : \033[0;32m'10 20 , 40 50'\033[0m\n"
+./push_swap "10 20 , 40 50"
+printf "\033[1;31mThis is the test with number '0' in a string : \033[0;32m'10 20 / 40 50'\033[0m\n"
+./push_swap "10 20 / 40 50"
+printf "\033[1;31mThis is the test with number '0' in a string : \033[0;32m'10 20 . 40 50'\033[0m\n"
+./push_swap "10 20 . 40 50"
 printf "\033[1;31mThis is the test with number '0' in a string : \033[0;32m'10 20 0 40 50'\033[0m\n"
 ./push_swap "10 20 0 40 50"
 printf "\033[1;31mThis is the test with number '0' in a string : \033[0;32m'10 20 15 40 50'\033[0m\n"
 ./push_swap "10 20 15 40 50"
+
+printf "\n\n\e[1;94m------VALIDATING IF ANY MEMORY LEAKS------\e[0m\n\n"
+leaks -atExit -- ./push_swap 1 4 6 5 
+
 
 printf "\n\n\e[1;94m------END OF TESTS------\e[0m\n\n"
