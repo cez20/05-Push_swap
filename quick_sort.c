@@ -6,86 +6,72 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 18:55:12 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/31 14:39:30 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/31 19:35:57 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	median_as_tail (t_stack *stacks, int median, int location);
-void	put_in_order (t_stacks *s, int median);
-
-void	quick_sort(t_stacks *s, int len)
+void	quick_sort(t_stacks *s)
 {
-	(void)len;
 	int 	median;
-	int		nb_location;
 	int		count;
 
 	median = 10;
 	count = 0;
-	//median = len / 2;
-	nb_location = which_half(s->stack_a, median);
-	while (dlst_len(s->stack_a->head) >= 2) 
+	while(s->stack_a->head != NULL)
 	{
-		median_as_tail(s->stack_a, median, nb_location);
-		while (s->stack_a->head->pos != median)
+		while (dlst_len(s->stack_b->head) < median)
 		{
 			if (s->stack_a->head->pos <= median)
 				push_b(s->stack_a, s->stack_b);
+			else if ((s->stack_a->head->pos > median) && (s->stack_b->head->data < s->stack_b->tail->data))
+				rotate_both (s->stack_a, s->stack_b);
 			else if (s->stack_a->head->pos > median)
 				rotate_a(s->stack_a);
 			if (dlst_len(s->stack_b->head) >= 2)
 			{
 				if((s->stack_b->head->data < s->stack_b->head->next->data) && (s->stack_b->head->data < s->stack_b->tail->data))
 					rotate_b(s->stack_b);
-				if((s->stack_b->head->data < s->stack_b->head->next->data && s->stack_b->head->data > s->stack_b->head->next->next->data))
+				else if((s->stack_b->head->data < s->stack_b->head->next->data) && (s->stack_b->head->data > s->stack_b->head->next->next->data))
 					swap_b(s->stack_b);
 				while (s->stack_b->head->data < s->stack_b->head->next->data)
 				{
 					swap_b(s->stack_b);
-					//rotate_b(s->stack_b);
-					push_a(s->stack_b, s->stack_a);
+					rotate_b(s->stack_b);
 					count++;
 				}
 				while (count > 0)
 				{
-					//reverse_rotate_b(s->stack_b);
-					push_b(s->stack_a, s->stack_b);
+					reverse_rotate_b(s->stack_b);
 					count--;
 				}
-				//if((s->stack_b->head->data < s->stack_b->head->next->data))
-					//swap_b(s->stack_b);
 				count = 0;
 			}
 		}
 		median += 10;
-		//median += (dlst_len(s->stack_a->head) / 2);
 	}
 	while (s->stack_b->head != NULL)
-	{
 		push_a(s->stack_b, s->stack_a);
-		// if (s->stack_a->head->pos > s->stack_a->head->next->pos)
-		// 	swap_a(s->stack_a);
-		// if ((s->stack_a->head->data > s->stack_a->head->next->data) && (s->stack_a->head->data > s->stack_a->head->next->next->data))
-		// {
-		// 	swap_a(s->stack_a);
-		// 	rotate_a(s->stack_a);
-		// 	swap_a(s->stack_a);
-		// 	reverse_rotate_a(s->stack_a);
-		// }	
-		// if((s->stack_a->head->data > s->stack_a->head->next->data))
-		// 	swap_a(s->stack_a);
-	}
 }
 
-void	median_as_tail(t_stack *stacks, int median, int location)
+
+/*void	quick_sort(t_stacks *s, int len)
 {
-	while (stacks->tail->pos != median)
+	(void)len;
+\
+
+	push_b(s->stack_a, s->stack_b);
+	push_b(s->stack_a, s->stack_b);
+	rotate_both (s->stack_a, s->stack_b);
+	while (s->stack_a->head)
 	{
-		if (location <= median)
-			rotate_a(stacks);
-		else if(location >= median)
-			reverse_rotate_a(stacks);
+		printf("%d\n", s->stack_a->head->data);
+		s->stack_a->head = s->stack_a->head->next;
 	}
-}
+	while (s->stack_b->head)
+	{
+		printf("%d\n", s->stack_b->head->data);
+		s->stack_b->head = s->stack_b->head->next;
+	}
+}*/

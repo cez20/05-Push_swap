@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:04:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/31 01:04:27 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/03/31 19:22:38 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,7 @@ void		positioning(int len, t_dlist *lst);
 void		error(void);
 
 // *** QUICK_SORT.C ***
-void	quick_sort(t_stacks *s, int len);
-void	median_as_tail (t_stack *stacks, int median, int location);
+void	quick_sort(t_stacks *s);
 
 // *** SELECTION.C ***
 void	simple_sort(t_stacks *s);
@@ -90,6 +89,9 @@ void	swap_a(t_stack *stack);
 void	swap_b(t_stack *stack);
 void	rotate_a(t_stack *stack);
 void	rotate_b(t_stack *stack);
+void	rotate_a1(t_stack *stack);
+void	rotate_b1(t_stack *stack);
+void	rotate_both(t_stack *stack_a, t_stack *stack_b);
 void	reverse_rotate_a(t_stack *stack);
 void	reverse_rotate_b(t_stack *stack);
 void	push_a(t_stack *stack_b, t_stack *stack_a);
