@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:27:32 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/04 14:18:36 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/05 15:44:04 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void	reverse_rotate_a(t_stack *stack)
 {
 	t_dlist	*temp;
 
-	if (stack->head != stack->tail && stack->head && stack->tail) //Si stack->head et stack->tail sont differents? et que chaque element n'est pas NULL.
+	if ((stack->head != stack->tail) && stack->head && stack->tail) //Si stack->head et stack->tail sont differents? et que chaque element n'est pas NULL.
 	{
 		temp = stack->tail->prev; //temp devient le node avant le stack->tail
 		temp->next = NULL; // le temp->next va pointer vers NULL maintenant qu'il devient le dernier element
@@ -175,6 +175,8 @@ void	push_b(t_stack *stack_a, t_stack *stack_b)
 {
 	t_dlist	*temp;
 	
+	if (!stack_a->head)
+		return ;
 	temp = stack_a->head->next;
 	if (!stack_b->head)
 	{

@@ -6,11 +6,13 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 18:55:12 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/04 14:14:56 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/05 16:35:48 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+//python3 pyviz.py `ruby -e "puts (1..100).to_a.shuffle.join(' ')"`
 
 void	quick_sort(t_stacks *s)
 {
@@ -25,8 +27,6 @@ void	quick_sort(t_stacks *s)
 		{
 			if (s->stack_a->head->pos <= median)
 				push_b(s->stack_a, s->stack_b);
-			//else if ((s->stack_a->head->pos > median) && (s->stack_b->head->data < s->stack_b->tail->data))
-				//rotate_both (s->stack_a, s->stack_b);
 			else if (s->stack_a->head->pos > median)
 				rotate_a(s->stack_a);
 			if (dlst_len(s->stack_b->head) >= 2)
