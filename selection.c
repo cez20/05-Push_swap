@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 15:24:18 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/04 14:25:25 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/06 12:15:09 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,20 @@ int	is_sorted(t_dlist *lst)
 	{
 		if (lst->data < lst->next->data)
 			lst = lst->next;
+		else
+			return (0);
+	}
+	return (1);
+}
+
+int	is_reverse_sorted(t_dlist *lst) //tail
+{
+	if (lst->pos != 1)
+		return (0);
+	while (lst->prev)
+	{
+		if (lst->data < lst->prev->data)
+			lst = lst->prev;
 		else
 			return (0);
 	}
