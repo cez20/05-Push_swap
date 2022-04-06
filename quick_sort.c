@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 18:55:12 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/06 16:19:30 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/06 16:24:31 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,11 @@ void	quick_sort(t_stacks *s, int len)
 	int		chunks[50];
 	int 	median;
 	int		count;
-	//int		nb_of_rotate;
 	int 	i;
 
 	i = 0;
 	count = 0;
-	median = (len / 2) + 1; // si chiffre impair on arrondi a la hausse.
+	median = (len / 2); // si chiffre impair on arrondi a la hausse.
 	while (dlst_len(s->stack_a->head) > 1) 
 	{
 		while (dlst_len(s->stack_b->head) < median)
@@ -84,10 +83,11 @@ void	quick_sort(t_stacks *s, int len)
 				rotate_a(s->stack_a);
 		}
 		chunks[i++] = count;
-		median += (dlst_len(s->stack_a->head) / 2) + 1;
+		median += (dlst_len(s->stack_a->head) / 2);
 		count = 0;
 	}
 	i--;
+	printf("%d\n", median);
 
 	//while (i >= 0)
 		//printf("%d\n", chunks[i--];
