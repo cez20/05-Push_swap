@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 18:55:12 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/06 16:24:31 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/07 14:55:13 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ void	quick_sort(t_stacks *s, int len)
 	int		chunks[50];
 	int 	median;
 	int		count;
+	int 	temp;
+	int		nb_of_rotate;
 	int 	i;
 
 	i = 0;
@@ -87,7 +89,36 @@ void	quick_sort(t_stacks *s, int len)
 		count = 0;
 	}
 	i--;
-	printf("%d\n", median);
+	temp = 0;
+	nb_of_rotate = 0;
+	while (s->stack_b->head)
+	{
+		count = chunks[i--];
+		while (count > 0)
+		{
+			temp = (count + 2) / 2; // Cela semble fonctionner pour l'instant, mais l'ideal serait de bien analyser que les median tombe sur ce que je veux. 
+			median = median - temp;
+			while (count >= temp)
+			{
+				if (s->stack_b->head->pos > median)
+				{
+					push_a(s->stack_b, s->stack_a);
+					count--;
+				}
+				else
+				{
+					rotate_b(s->stack_b);
+					nb_of_rotate++;
+				}
+			}
+			while (nb_of_rotate > 0)
+			{
+				reverse_rotate_b(s->stack_b);
+				nb_of_rotate--;
+			}
+			nb_of_rotate = 0;
+		}
+	}
 
 	//while (i >= 0)
 		//printf("%d\n", chunks[i--];
