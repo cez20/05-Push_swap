@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:04:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/06 13:34:37 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/08 09:24:49 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,9 @@ void		error(void);
 
 // *** QUICK_SORT.C ***
 //void		quick_sort(t_stacks *s);
-void		quick_sort(t_stacks *s, int len);
-void		quick_sort1(t_stacks *s);
+void		quick_sort(t_stacks *s);
+void		quick_sort1(t_stacks *s, int len);
+void		stack_in_order (t_stacks *s, int median);
 
 // *** SELECTION.C ***
 void		simple_sort(t_stacks *s);
