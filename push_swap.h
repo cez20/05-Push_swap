@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:04:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/08 09:24:49 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/08 11:35:18 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,9 @@ void		error(void);
 
 // *** QUICK_SORT.C ***
 //void		quick_sort(t_stacks *s);
-void		quick_sort(t_stacks *s);
-void		quick_sort1(t_stacks *s, int len);
+//void		quick_sort(t_stacks *s);
+//void		quick_sort1(t_stacks *s, int len);
+void		quick_sort2(t_stacks *stacks,int length);
 void		stack_in_order (t_stacks *s, int median);
 
 // *** SELECTION.C ***
@@ -82,6 +83,7 @@ void		simple_sort(t_stacks *s);
 void		push_b(t_stack *stack_a, t_stack *stack_b);
 void		push_a(t_stack *stack_b, t_stack *stack_a);
 void		selection_sort(t_stacks *s, int len);
+void		selection_sort1(t_stacks *s, int len);
 int			which_half(t_stack *stack, int small);
 int			is_sorted(t_dlist *lst);
 int			is_reverse_sorted(t_dlist *lst);

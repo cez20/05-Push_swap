@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:27:32 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/07 23:12:53 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/08 13:03:01 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,8 @@ void	reverse_rotate_b(t_stack *stack)
 {
 	t_dlist	*temp;
 
-	if (stack->head != stack->tail && stack->head && stack->tail) //Si stack->head et stack->tail sont differents? et que chaque element n'est pas NULL.
+	//if (stack->head != stack->tail && stack->head && stack->tail) // je crois que la premiere condition n'est pas necessaires
+	if (stack->head && stack->tail)
 	{
 		temp = stack->tail->prev; //temp devient le node avant le stack->tail
 		temp->next = NULL; // le temp->next va pointer vers NULL maintenant qu'il devient le dernier element
@@ -151,6 +152,7 @@ void	reverse_rotate_b(t_stack *stack)
 		stack->head->prev = stack->tail; //le stack->head->prev devient le tail car tial 1er element de la liste.
 		stack->head = stack->tail; // le head devient le tail. 
 		stack->tail = temp; // le nouveau tail est l'element anterieur a l'ancien tail. 
+		//temp->next = NULL;
 		write (1, "rrb\n", 4); 
 	}
 }
@@ -162,9 +164,10 @@ void	push_a(t_stack *stack_b, t_stack *stack_a)
 	temp = stack_a->head;
 	if(stack_b->head != NULL) 
 	{
-		//stack_a->head->prev = stack_b->head; // problematique quand stack_a est vide! 
+		stack_a->head->prev = stack_b->head; // problematique quand stack_a est vide! 
 		stack_a->head = stack_b->head;
-		stack_b->head = stack_a->head->next;
+		//stack_b->head = stack_a->head->next;
+		stack_b->head = stack_b->head->next;
 		stack_a->head->next = temp;
 		stack_a->head->prev = NULL;
 	}
@@ -182,16 +185,17 @@ void	push_b(t_stack *stack_a, t_stack *stack_b)
 	{
 		stack_a->head->next = NULL;
 		stack_b->head = stack_a->head;
-		stack_b->head->next = NULL;
+		//stack_b->head->next = NULL; //Ceci n'est pas necessaire selon moi, car le stack_a->head->prev d'emblee est a NULL.
 		stack_b->tail = stack_b->head;
 	}
 	else
 	{
 		stack_a->head->next = stack_b->head;
+		stack_b->head->prev = stack_a->head;
 		stack_b->head = stack_a->head;
 	}
 	stack_a->head = temp;
-	//stack_a->head->prev = NULL;
-	stack_b->head->prev = NULL;
+	stack_a->head->prev = NULL; // ceci est problematique
+	//stack_b->head->prev = NULL; //Pas necessaire, car d/emblee le stack_a head->prev est deja a NULL.
 	write(1, "pb\n", 3);
 }

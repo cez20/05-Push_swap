@@ -6,11 +6,13 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 15:24:18 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/06 12:15:09 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/08 16:47:33 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int *verify_small(t_stacks *s,int *small, int *len);
 
 void	selection_sort(t_stacks *s, int len)
 {
@@ -36,6 +38,60 @@ void	selection_sort(t_stacks *s, int len)
 	simple_sort(s);
 	while (s->stack_b->head != NULL)
 		push_a(s->stack_b, s->stack_a);
+}
+
+void	selection_sort1(t_stacks *s, int len)
+{
+	int	small;
+	int	nb_location;
+
+	while (len > 0)
+	{
+		small = smallest_nb(s->stack_b);
+		verify_small(s , &small, &len);
+		nb_location = which_half(s->stack_b, small);
+		while (s->stack_b->head->pos != small)
+		{
+			if (nb_location <= (len / 2))
+				rotate_b(s->stack_b);
+			else if (nb_location >= (len / 2))
+				reverse_rotate_b(s->stack_b);
+		}
+		push_a(s->stack_b, s->stack_a);
+		rotate_a(s->stack_a);
+		len--;
+	}
+}
+
+// int*	verify_small(t_stacks *s,int *small, int *len)
+// {
+	
+// 	while (*small != (s->stack_a->tail->pos + 1))
+// 	{
+// 		if (*small == 1)
+// 			break;
+// 		push_b(s->stack_a, s->stack_b);
+// 		(*len)++;
+// 		*small = smallest_nb(s->stack_b);
+// 	}
+// 	return (small);
+// }
+
+int*	verify_small(t_stacks *s,int *small, int *len)
+{
+	
+	while (*small != (s->stack_a->tail->pos + 1))
+	{
+		if (*small == 1)
+			return (small);
+		if (s->stack_a->head->pos == *small)
+			rotate_a(s->stack_a);
+		else	
+			push_b(s->stack_a, s->stack_b);
+		(*len)++;
+		*small = smallest_nb(s->stack_b);
+	}
+	return (small);
 }
 
 int	which_half(t_stack *stack, int small)
