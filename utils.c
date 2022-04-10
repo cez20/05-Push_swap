@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 15:45:01 by cezmenji          #+#    #+#             */
-/*   Updated: 2022/03/23 17:54:01 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/10 12:32:29 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,6 @@ void	positioning(int len, t_dlist *lst)
 	}
 }
 
-void	error(void)
-{
-	ft_putstr_fd("Error\n", STDERR_FILENO);
-	exit (EXIT_FAILURE);
-}
-
 void	print_dlist(t_dlist *head)
 {
 	int	i;
@@ -54,4 +48,24 @@ void	print_dlist(t_dlist *head)
 		i++;
 	}
 	printf("\n");
+}
+
+int	is_sorted(t_dlist *lst)
+{
+	if (lst->pos != 1)
+		return (0);
+	while (lst->next)
+	{
+		if (lst->data < lst->next->data)
+			lst = lst->next;
+		else
+			return (0);
+	}
+	return (1);
+}
+
+void	error(void)
+{
+	ft_putstr_fd("Error\n", STDERR_FILENO);
+	exit (EXIT_FAILURE);
 }

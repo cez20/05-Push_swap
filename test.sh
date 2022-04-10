@@ -32,7 +32,7 @@ printf "\033[1;31mThis is the test with : \033[0;32m'10 20 30 40 50'\033[0m\n"
 printf "\033[1;31mThis is the test with duplicate: \033[0;32m'10 20 30 40 50 50'\033[0m\n"
 ./push_swap "10 20 30 40 50 50"
 printf "\033[1;31mThis is the test with duplicate in a string: \033[0;32m'10 20 30 40 50 50'\033[0m\n"
-./push_swap "10 20 30 40 50 50"
+./push_swap 10 20 30 40 50 
 printf "\033[1;31mThis is the test with INT lower than INT_MIN : \033[0;32m-2147483649 20 30 40 50\033[0m\n"
 ./push_swap -2147483649 20 30 40 50 
 printf "\033[1;31mThis is the test with INT lower than INT_MIN in a string : \033[0;32m'-2147483649 20 30 40 50'\033[0m\n"

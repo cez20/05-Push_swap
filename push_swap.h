@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:04:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/10 11:24:13 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/10 17:55:39 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,6 @@ typedef struct s_stacks
 
 // *** MAIN.C ***
 int			main(int argc, char **argv);
-void		create_dlist(t_stack *stack_a, char **argv);
-void		dlst_clear(t_stack *stack);
-void		print_dlist(t_dlist *head);
 
 // *** STACKS.C ***
 t_stacks	*initialize_stacks(void);
@@ -53,57 +50,55 @@ void		clear_stacks(t_stacks *stacks);
 // *** ARGS_VALIDATION.C ***
 void		int_validation(char **argv);
 void		check_duplicate(char **argv, int i);
-long		ft_atol(const char *str);
 void		check_if_int(char **str, int i);
-int			ft_strcmp(const char *s1, const char *s2);
+long		ft_atol(const char *str);
 int			ft_strchr1(const char *s, int c);
 
 // *** DLIST_CREATION.C ***
 void		dlist_creation(t_stack *stack_a, char **argv);
-void		free_args(char **args, int i, int j);
-void		dlst_add_back(t_dlist **head, t_dlist *new);
-void		dlst_add_front(t_dlist **head, t_dlist *new);
-t_dlist		*dlst_last(t_dlist *lst);
-int			dlst_len(t_dlist *lst);
 t_dlist		*dlst_new(int content);
+void		dlst_add_back(t_dlist **head, t_dlist *new);
+t_dlist		*dlst_last(t_dlist *lst);
+void		free_args(char **args, int i, int j);
+
+// *** DLIST_MAINTENANCE.C ***
+int			dlst_len(t_dlist *lst);
+void		dlst_clear(t_stack *stack);
+
+// *** OPERATIONS_A.C ***
+void		swap_a(t_stack *stack);
+void		rotate_a(t_stack *stack);
+void		reverse_rotate_a(t_stack *stack);
+void		push_a(t_stack *stack_b, t_stack *stack_a);
+
+// *** OPERATIONS_B.C ***
+void		swap_b(t_stack *stack);
+void		rotate_b(t_stack *stack);
+void		reverse_rotate_b(t_stack *stack);
+void		push_b(t_stack *stack_a, t_stack *stack_b);
+
+// *** SELECTION.C ***
+void		selection_sort(t_stacks *s, int len);
+void		simple_sort(t_stacks *s);
+int			which_half(t_stack *stack, int small);
+int			smallest_nb(t_stack *stack);
+int			biggest_nb(t_stack *stack);
+
+// *** QUICK_SORT.C ***
+void		quick_sort(t_stacks *s, int len);
+void		quick_sort1(t_stacks *s, int len);
+void		selection_sort2(t_stacks *s, int len);
+void		push_back_to_a(t_stacks *s, int count);
+int			find_median(t_stacks *s, int len);
+void		bubble_sort(int *tab, int size);
+void		first_sort(t_stacks *s);
+void		selection_sort1(t_stacks *s, int len);
+int			*verify_small(t_stacks *s, int *small, int *len);
 
 // *** UTILS.C   ***
 void		positioning(int len, t_dlist *lst);
-void		error(void);
-
-// *** QUICK_SORT.C ***
-//void		quick_sort(t_stacks *s);
-//void		quick_sort(t_stacks *s);
-//void		quick_sort1(t_stacks *s, int len);
-//void		quick_sort2(t_stacks *stacks,int length);
-void		quick_sort3(t_stacks *s, int len);
-//void		quick_sort4(t_stacks *s, int len);
-void		stack_in_order (t_stacks *s, int median);
-
-// *** SELECTION.C ***
-void		simple_sort(t_stacks *s);
-void		push_b(t_stack *stack_a, t_stack *stack_b);
-void		push_a(t_stack *stack_b, t_stack *stack_a);
-void		selection_sort(t_stacks *s, int len);
-void		selection_sort1(t_stacks *s, int len);
-void		selection_sort2(t_stacks *s, int len);
-int			which_half(t_stack *stack, int small);
+void		print_dlist(t_dlist *head);
 int			is_sorted(t_dlist *lst);
-int			is_reverse_sorted(t_dlist *lst);
-int			biggest_nb(t_stack *stack);
-int			smallest_nb(t_stack *stack);
-
-// *** OPERATIONS.C ***
-void		swap_a(t_stack *stack);
-void		swap_b(t_stack *stack);
-void		rotate_a(t_stack *stack);
-void		rotate_b(t_stack *stack);
-void		rotate_a1(t_stack *stack);// A enlever au besoin
-void		rotate_b1(t_stack *stack); // a enlever au besoin 
-void		rotate_both(t_stack *stack_a, t_stack *stack_b); // A enlever au besoin
-void		reverse_rotate_a(t_stack *stack);
-void		reverse_rotate_b(t_stack *stack);
-void		push_a(t_stack *stack_b, t_stack *stack_a);
-void		push_b(t_stack *stack_a, t_stack *stack_b);
+void		error(void);
 
 #endif

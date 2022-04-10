@@ -6,11 +6,23 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:14:13 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/21 14:54:40 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/10 12:12:57 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	dlst_add_front(t_dlist **head, t_dlist *new)
+{
+	if (*head == NULL)
+		*head = new;
+	else
+	{
+		(*head)->prev = new;
+		new->next = *head;
+		*head = new;
+	}
+}
 
 int	dlst_len(t_dlist *lst)
 {

@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:36:43 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/23 15:54:45 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/10 12:13:37 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,21 @@ void	dlist_creation(t_stack *stack_a, char **argv)
 	free_args(args, i, j);
 }
 
-void	free_args(char **args, int i, int j)
+t_dlist	*dlst_new(int data)
 {
-	if (i == 2)
+	t_dlist	*list;
+
+	list = malloc(sizeof(*list));
+	if (!list)
 	{
-		while (j > 0 && args[--j])
-			free(args[j]);
-		free(args);
+		ft_putstr_fd("Malloc failed\n", 2);
+		exit(EXIT_FAILURE);
 	}
+	list->data = data;
+	list->next = NULL;
+	list->prev = NULL;
+	list->pos = 0;
+	return (list);
 }
 
 void	dlst_add_back(t_dlist **head, t_dlist *new)
@@ -61,18 +68,6 @@ void	dlst_add_back(t_dlist **head, t_dlist *new)
 	}
 }
 
-void	dlst_add_front(t_dlist **head, t_dlist *new)
-{
-	if (*head == NULL)
-		*head = new;
-	else
-	{
-		(*head)->prev = new;
-		new->next = *head;
-		*head = new;
-	}
-}
-
 t_dlist	*dlst_last(t_dlist *lst)
 {
 	if (lst)
@@ -83,19 +78,12 @@ t_dlist	*dlst_last(t_dlist *lst)
 	return (lst);
 }
 
-t_dlist	*dlst_new(int data)
+void	free_args(char **args, int i, int j)
 {
-	t_dlist	*list;
-
-	list = malloc(sizeof(*list));
-	if (!list)
+	if (i == 2)
 	{
-		ft_putstr_fd("Malloc failed\n", 2);
-		exit(EXIT_FAILURE);
+		while (j > 0 && args[--j])
+			free(args[j]);
+		free(args);
 	}
-	list->data = data;
-	list->next = NULL;
-	list->prev = NULL;
-	list->pos = 0;
-	return (list);
 }
