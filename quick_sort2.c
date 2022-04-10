@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 10:58:39 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/09 00:15:09 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/09 20:52:11 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	quick_sort2(t_stacks *s, int len)
 		//selection_sort1(s, dlst_len(s->stack_b->head));
 	median = temp_array (s, dlst_len(s->stack_b->head)); // Nous avons la position qui represente la mediane.
 	len = dlst_len(s->stack_b->head); // Je dois changer la longueur pour la longueur de  la stack_b.
-	while (dlst_len(s->stack_b->head) > len / 2 && s->stack_b->head) // IMPORTANT = Je suis rendu a changer la loop, lorsqu'il ne rentre plus dans cette boucle, on refait bubble_sort et on recalcule mediane
+	while (dlst_len(s->stack_b->head) > len / 2) //&& s->stack_b->head) // IMPORTANT = Je suis rendu a changer la loop, lorsqu'il ne rentre plus dans cette boucle, on refait bubble_sort et on recalcule mediane
 	{
 		if (dlst_len(s->stack_b->head) <= 13) // Si lorsqu'il rentre dans cette boucle, je me rends compte que la longueur de stack_b est plus petit que 13, je fais selection_sort
 		{

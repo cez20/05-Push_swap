@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 15:24:18 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/08 16:47:33 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/10 00:36:45 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	selection_sort1(t_stacks *s, int len)
 	while (len > 0)
 	{
 		small = smallest_nb(s->stack_b);
-		verify_small(s , &small, &len);
+		verify_small(s , &small, &len); // Je crois que techniquement ceci n'est pas obligatoire.
 		nb_location = which_half(s->stack_b, small);
 		while (s->stack_b->head->pos != small)
 		{
