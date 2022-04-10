@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:27:32 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/08 13:03:01 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/10 11:11:36 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,15 +187,17 @@ void	push_b(t_stack *stack_a, t_stack *stack_b)
 		stack_b->head = stack_a->head;
 		//stack_b->head->next = NULL; //Ceci n'est pas necessaire selon moi, car le stack_a->head->prev d'emblee est a NULL.
 		stack_b->tail = stack_b->head;
+		stack_b->head->prev = NULL;
 	}
 	else
 	{
 		stack_a->head->next = stack_b->head;
 		stack_b->head->prev = stack_a->head;
 		stack_b->head = stack_a->head;
+		stack_b->head->prev = NULL;
 	}
 	stack_a->head = temp;
-	stack_a->head->prev = NULL; // ceci est problematique
+	//stack_a->head->prev = NULL; // ceci est problematique
 	//stack_b->head->prev = NULL; //Pas necessaire, car d/emblee le stack_a head->prev est deja a NULL.
 	write(1, "pb\n", 3);
 }

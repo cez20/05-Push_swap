@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 15:24:18 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/10 00:36:45 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/10 11:23:14 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,31 +63,14 @@ void	selection_sort1(t_stacks *s, int len)
 	}
 }
 
-// int*	verify_small(t_stacks *s,int *small, int *len)
-// {
-	
-// 	while (*small != (s->stack_a->tail->pos + 1))
-// 	{
-// 		if (*small == 1)
-// 			break;
-// 		push_b(s->stack_a, s->stack_b);
-// 		(*len)++;
-// 		*small = smallest_nb(s->stack_b);
-// 	}
-// 	return (small);
-// }
-
 int*	verify_small(t_stacks *s,int *small, int *len)
 {
 	
 	while (*small != (s->stack_a->tail->pos + 1))
 	{
 		if (*small == 1)
-			return (small);
-		if (s->stack_a->head->pos == *small)
-			rotate_a(s->stack_a);
-		else	
-			push_b(s->stack_a, s->stack_b);
+			break;
+		push_b(s->stack_a, s->stack_b);
 		(*len)++;
 		*small = smallest_nb(s->stack_b);
 	}
