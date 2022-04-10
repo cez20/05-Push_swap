@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:27:32 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/31 01:04:19 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/10 11:11:36 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,21 @@ void	rotate_a(t_stack *stack)
 		write (1, "ra\n", 3);
 	}
 }
+void	rotate_a1(t_stack *stack)
+{
+	t_dlist	*temp;
+
+	if (stack->head != stack->tail && stack->head && stack->tail)//Si stack->head et stack->tail sont differents? et que chaque element n'est pas NULL.
+	{	
+		temp = stack->head->next; // temp devient la node suivant
+		temp->prev = NULL;
+		stack->head->next = NULL; // le stack->head devient le dernier element et devient NULL.
+		stack->head->prev = stack->tail; // stack->head-> prev devient le tail, car le tail precedera le head, car le head est place a la fin. // temp->prev devient NULL>
+		stack->tail->next = stack->head;  // stack->tail->next qui est normalement a NULL pointe vers le head qui est maintenant dernier
+		stack->tail = stack->head; // stack->tail (le tail) devient le head qui est le dernier elements
+		stack->head = temp; //le nouveau head devient l'element qui etaitn initalement le 2e
+	}
+}
 
 void	rotate_b(t_stack *stack)
 {
@@ -85,40 +100,34 @@ void	rotate_b(t_stack *stack)
 		write (1, "rb\n", 3);
 	}
 }
+void	rotate_b1(t_stack *stack)
+{
+	t_dlist	*temp;
 
-// void	rotate_both(t_stack *stack_a, t_stack *stack_b)
-// {
-// 	t_dlist	*temp;
-// 	t_dlist *temp1;
-	
-// 	if (stack_a->head != stack_a->tail && stack_a->head && stack_a->tail)//Si stack->head et stack->tail sont differents? et que chaque element n'est pas NULL.
-// 	{	
-// 		temp = stack_a->head->next; // temp devient la node suivant
-// 		temp->prev = NULL;
-// 		stack_a->head->next = NULL; // le stack->head devient le dernier element et devient NULL.
-// 		stack_a->head->prev = stack_a->tail; // stack->head-> prev devient le tail, car le tail precedera le head, car le head est place a la fin. // temp->prev devient NULL>
-// 		stack_a->tail->next = stack_a->head;  // stack->tail->next qui est normalement a NULL pointe vers le head qui est maintenant dernier
-// 		stack_a->tail = stack_a->head; // stack->tail (le tail) devient le head qui est le dernier elements
-// 		stack_a->head = temp; //le nouveau head devient l'element qui etaitn initalement le 2e
-// 	}
-// 	if (stack_b->head != stack_b->tail && stack_b->head && stack_b->tail)//Si stack->head et stack->tail sont differents? et que chaque element n'est pas NULL.
-// 	{	
-// 		temp1 = stack_b->head->next; // temp devient la node suivant
-// 		temp1->prev = NULL;
-// 		stack_b->head->next = NULL; // le stack->head devient le dernier element et devient NULL.
-// 		stack_b->head->prev = stack_b->tail; // stack->head-> prev devient le tail, car le tail precedera le head, car le head est place a la fin. // temp->prev devient NULL>
-// 		stack_b->tail->next = stack_b->head;  // stack->tail->next qui est normalement a NULL pointe vers le head qui est maintenant dernier
-// 		stack_b->tail = stack_b->head; // stack->tail (le tail) devient le head qui est le dernier elements
-// 		stack_b->head = temp1; //le nouveau head devient l'element qui etaitn initalement le 2e
-// 	}
-// 	write (1, "rr\n", 3);
-// }
+	if (stack->head != stack->tail && stack->head && stack->tail)//Si stack->head et stack->tail sont differents? et que chaque element n'est pas NULL.
+	{	
+		temp = stack->head->next; // temp devient la node suivant
+		temp->prev = NULL;
+		stack->head->next = NULL; // le stack->head devient le dernier element et devient NULL.
+		stack->head->prev = stack->tail; // stack->head-> prev devient le tail, car le tail precedera le head, car le head est place a la fin. // temp->prev devient NULL>
+		stack->tail->next = stack->head;  // stack->tail->next qui est normalement a NULL pointe vers le head qui est maintenant dernier
+		stack->tail = stack->head; // stack->tail (le tail) devient le head qui est le dernier elements
+		stack->head = temp; //le nouveau head devient l'element qui etaitn initalement le 2e
+	}
+}
+
+ void	rotate_both(t_stack *stack_a, t_stack *stack_b)
+ {
+	 rotate_a1(stack_a);
+	 rotate_b1(stack_b);
+	 write (1, "rr\n", 3);
+ }
 
 void	reverse_rotate_a(t_stack *stack)
 {
 	t_dlist	*temp;
 
-	if (stack->head != stack->tail && stack->head && stack->tail) //Si stack->head et stack->tail sont differents? et que chaque element n'est pas NULL.
+	if ((stack->head != stack->tail) && stack->head && stack->tail) //Si stack->head et stack->tail sont differents? et que chaque element n'est pas NULL.
 	{
 		temp = stack->tail->prev; //temp devient le node avant le stack->tail
 		temp->next = NULL; // le temp->next va pointer vers NULL maintenant qu'il devient le dernier element
@@ -134,7 +143,8 @@ void	reverse_rotate_b(t_stack *stack)
 {
 	t_dlist	*temp;
 
-	if (stack->head != stack->tail && stack->head && stack->tail) //Si stack->head et stack->tail sont differents? et que chaque element n'est pas NULL.
+	//if (stack->head != stack->tail && stack->head && stack->tail) // je crois que la premiere condition n'est pas necessaires
+	if (stack->head && stack->tail)
 	{
 		temp = stack->tail->prev; //temp devient le node avant le stack->tail
 		temp->next = NULL; // le temp->next va pointer vers NULL maintenant qu'il devient le dernier element
@@ -142,6 +152,7 @@ void	reverse_rotate_b(t_stack *stack)
 		stack->head->prev = stack->tail; //le stack->head->prev devient le tail car tial 1er element de la liste.
 		stack->head = stack->tail; // le head devient le tail. 
 		stack->tail = temp; // le nouveau tail est l'element anterieur a l'ancien tail. 
+		//temp->next = NULL;
 		write (1, "rrb\n", 4); 
 	}
 }
@@ -153,9 +164,10 @@ void	push_a(t_stack *stack_b, t_stack *stack_a)
 	temp = stack_a->head;
 	if(stack_b->head != NULL) 
 	{
-		stack_a->head->prev = stack_b->head;
+		stack_a->head->prev = stack_b->head; // problematique quand stack_a est vide! 
 		stack_a->head = stack_b->head;
-		stack_b->head = stack_a->head->next;
+		//stack_b->head = stack_a->head->next;
+		stack_b->head = stack_b->head->next;
 		stack_a->head->next = temp;
 		stack_a->head->prev = NULL;
 	}
@@ -166,21 +178,26 @@ void	push_b(t_stack *stack_a, t_stack *stack_b)
 {
 	t_dlist	*temp;
 	
+	if (!stack_a->head)
+		return ;
 	temp = stack_a->head->next;
 	if (!stack_b->head)
 	{
 		stack_a->head->next = NULL;
 		stack_b->head = stack_a->head;
-		stack_b->head->next = NULL;
+		//stack_b->head->next = NULL; //Ceci n'est pas necessaire selon moi, car le stack_a->head->prev d'emblee est a NULL.
 		stack_b->tail = stack_b->head;
+		stack_b->head->prev = NULL;
 	}
 	else
 	{
 		stack_a->head->next = stack_b->head;
+		stack_b->head->prev = stack_a->head;
 		stack_b->head = stack_a->head;
+		stack_b->head->prev = NULL;
 	}
 	stack_a->head = temp;
-	stack_a->head->prev = NULL;
-	stack_b->head->prev = NULL;
+	//stack_a->head->prev = NULL; // ceci est problematique
+	//stack_b->head->prev = NULL; //Pas necessaire, car d/emblee le stack_a head->prev est deja a NULL.
 	write(1, "pb\n", 3);
 }

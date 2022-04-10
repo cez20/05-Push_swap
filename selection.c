@@ -6,29 +6,31 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 15:24:18 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/30 16:32:09 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/10 11:23:14 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int *verify_small(t_stacks *s,int *small, int *len);
+
 void	selection_sort(t_stacks *s, int len)
 {
-	int 	small;
-	int 	nb_location;
-	
+	int	small;
+	int	nb_location;
+
 	while (len > 3)
 	{
 		small = smallest_nb(s->stack_a);
 		nb_location = which_half(s->stack_a, small);
-		while(s->stack_a->head->pos != small)
+		while (s->stack_a->head->pos != small)
 		{
 			if (nb_location <= (len / 2))
 				rotate_a(s->stack_a);
-			else if(nb_location >= (len / 2))
+			else if (nb_location >= (len / 2))
 				reverse_rotate_a(s->stack_a);
 			if (is_sorted(s->stack_a->head) == 1)
-		 		return;
+				return ;
 		}
 		push_b(s->stack_a, s->stack_b);
 		len--;
@@ -38,10 +40,47 @@ void	selection_sort(t_stacks *s, int len)
 		push_a(s->stack_b, s->stack_a);
 }
 
-int which_half(t_stack *stack, int small)
+void	selection_sort1(t_stacks *s, int len)
+{
+	int	small;
+	int	nb_location;
+
+	while (len > 0)
+	{
+		small = smallest_nb(s->stack_b);
+		verify_small(s , &small, &len); // Je crois que techniquement ceci n'est pas obligatoire.
+		nb_location = which_half(s->stack_b, small);
+		while (s->stack_b->head->pos != small)
+		{
+			if (nb_location <= (len / 2))
+				rotate_b(s->stack_b);
+			else if (nb_location >= (len / 2))
+				reverse_rotate_b(s->stack_b);
+		}
+		push_a(s->stack_b, s->stack_a);
+		rotate_a(s->stack_a);
+		len--;
+	}
+}
+
+int*	verify_small(t_stacks *s,int *small, int *len)
+{
+	
+	while (*small != (s->stack_a->tail->pos + 1))
+	{
+		if (*small == 1)
+			break;
+		push_b(s->stack_a, s->stack_b);
+		(*len)++;
+		*small = smallest_nb(s->stack_b);
+	}
+	return (small);
+}
+
+int	which_half(t_stack *stack, int small)
 {
 	t_dlist	*temp;
-	int count;
+	int		count;
 
 	temp = stack->head;
 	count = 1;
@@ -56,27 +95,40 @@ int which_half(t_stack *stack, int small)
 void	simple_sort(t_stacks *s)
 {
 	int	big;
-	int small;
+	int	small;
 
-	small = smallest_nb(s->stack_a); 
-	big = biggest_nb(s->stack_a); // big devient le chiffre le plus element de la liste. 
-	if (s->stack_a->head->pos == big) //si la pos de la head est le chiffre le plus gros, faire RA et le pousser en dernier 
+	small = smallest_nb(s->stack_a);
+	big = biggest_nb(s->stack_a);
+	if (s->stack_a->head->pos == big)
 		rotate_a(s->stack_a);
-	else if (s->stack_a->head->next->pos == big) // si l'element apres le head est la plus gros, faire RRA
+	else if (s->stack_a->head->next->pos == big)
 		reverse_rotate_a(s->stack_a);
-	if (s->stack_a->head->next->pos == small && s->stack_a->tail->pos == big) 
-		swap_a(s->stack_a); 
+	if (s->stack_a->head->next->pos == small && s->stack_a->tail->pos == big)
+		swap_a(s->stack_a);
 }
 
-
-int	is_sorted(t_dlist *lst) // on prend le head de la linked list 
+int	is_sorted(t_dlist *lst)
 {
-	if (lst->pos != 1) // Si la position du premier element de la liste est different de 1
-		return (0); //retourne false.
-	while (lst->next) //Tant que lst->next est different de NULL. 
+	if (lst->pos != 1)
+		return (0);
+	while (lst->next)
 	{
-		if (lst->data < lst->next->data) // Si le chiffre du node actuel est plus petite que celui du node suivante
-			lst = lst->next; // On saute au prochain node
+		if (lst->data < lst->next->data)
+			lst = lst->next;
+		else
+			return (0);
+	}
+	return (1);
+}
+
+int	is_reverse_sorted(t_dlist *lst) //tail
+{
+	if (lst->pos != 1)
+		return (0);
+	while (lst->prev)
+	{
+		if (lst->data < lst->prev->data)
+			lst = lst->prev;
 		else
 			return (0);
 	}

@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:36:43 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/31 00:38:52 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/10 11:23:44 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int argc, char **argv)
 {
 	t_stacks	*stacks;
-	int 		length;
+	int			length;
 
 	if (argc >= 2)
 	{
@@ -25,18 +25,21 @@ int	main(int argc, char **argv)
 		length = dlst_len(stacks->stack_a->head);
 		positioning(length, stacks->stack_a->head);
 		if (is_sorted(stacks->stack_a->head) == 1)
-		 	return (0);
-		if (length <= 3)
-		 	simple_sort(stacks);
-		if (length > 3 && length < 6)
+			return (0);
+		if (length <= 5)
 			selection_sort(stacks, length);
-		if (length > 6)
-			quick_sort(stacks, length);
+		if (length > 5)
+			quick_sort3(stacks, length);
+		if (is_sorted(stacks->stack_a->head) == 1)
+			printf("Bravo! You did it!");
+		// if (length > 5)
+		// 	quick_sort(stacks, length);
+		//if (length > 100)
+		 	//quick_sort1(stacks);
 		clear_stacks(stacks);
 	}
 	return (0);
 }
-
 
 //print_dlist(stacks->stack_a->head);
 /*while (stacks->stack_a->head)
