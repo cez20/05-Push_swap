@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 20:51:45 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/10 21:32:40 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/11 10:50:01 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,17 @@
 void	quick_sort(t_stacks *s, int len)
 {
 	int	median;
-	int	count;
 
-	median = (len / 2);
-	count = 0;
-	while (dlst_len(s->stack_b->head) < median)
+	while (dlst_len(s->stack_b->head) < (len / 2))
 	{
-		if (s->stack_a->head->pos <= median)
-		{
+		if (s->stack_a->head->pos <= (len / 2))
 			push_b(s->stack_a, s->stack_b);
-			count++;
-		}
 		else
 			rotate_a(s->stack_a);
 	}
-	push_back_to_a(s, count);
-
-	while ((is_sorted(s->stack_a->head) != 1) && (dlst_len(s->stack_b->head) == 0))
+	push_back_to_a(s, dlst_len(s->stack_b->head));
+	median = 0;
+	while ((is_sorted(s->stack_a->head) != 1))
 	{
 		first_sort(s);
 		while (s->stack_b->head)
@@ -40,16 +34,14 @@ void	quick_sort(t_stacks *s, int len)
 			median = find_median(s, len);
 			while ((dlst_len(s->stack_b->head) > (len / 2)))
 			{
-				if (dlst_len(s->stack_b->head) <= 45)
-				{
-					selection_sort1(s, dlst_len(s->stack_b->head));
+				if (dlst_len(s->stack_b->head) <= 20)
 					break ;
-				}
 				if (s->stack_b->head->pos >= median)
 					push_a(s->stack_b, s->stack_a);
 				else
 					rotate_b(s->stack_b);
 			}
+			selection_sort1(s, dlst_len(s->stack_b->head));
 		}
 	}
 }
@@ -63,7 +55,7 @@ void	first_sort(t_stacks *s)
 		else
 			push_b(s->stack_a, s->stack_b);
 	}
-	if (dlst_len(s->stack_b->head) <= 45)
+	if (dlst_len(s->stack_b->head) <= 20)
 		selection_sort1(s, dlst_len(s->stack_b->head));
 }
 
@@ -116,10 +108,10 @@ void	push_back_to_a(t_stacks *s, int count) // Cette fonction devra etre amelior
 {
 	int	new_median;
 
-	while (count > 45)
+	while (count > 20)
 	{
 		new_median = count / 2;
-		while ((count > 45) && (count > new_median))
+		while ((count > 20) && (count > new_median))
 		{
 			if (s->stack_b->head->pos > new_median)
 			{

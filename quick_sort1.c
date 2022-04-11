@@ -6,75 +6,47 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 15:12:21 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/10 17:50:02 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/11 10:32:45 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	quick_sort1(t_stacks *s, int len)
+void	quick_sort(t_stacks *s, int len)
 {
 	int	median;
-	int	count;
 
-	median = (len / 2);
-	count = 0;
-	while (s->stack_a->head)
+	while (dlst_len(s->stack_b->head) < (len / 2))
 	{
-		while (dlst_len(s->stack_b->head) < median)
-		{
-			if (dlst_len(s->stack_a->head) <= 25)
-			{
-				selection_sort2(s, dlst_len(s->stack_a->head));
-	 			break ;
-			}
-			if (s->stack_a->head->pos <= median)
-			{
-				push_b(s->stack_a, s->stack_b);
-				count++;
-			}
-			else
-				rotate_a(s->stack_a);
-		}
-		median += 25;
+		if (s->stack_a->head->pos <= (len / 2))
+			push_b(s->stack_a, s->stack_b);
+		else
+			rotate_a(s->stack_a);
 	}
-	count = 100;
-	push_back_to_a(s, count);
-	
-	median = 50;
+	push_back_to_a(s, dlst_len(s->stack_b->head));
+
+	median = 0;
 	while ((is_sorted(s->stack_a->head) != 1) && (dlst_len(s->stack_b->head) == 0))
 	{
-		while (s->stack_a->head->pos <= median)
+		first_sort(s);
+		while (s->stack_b->head)
 		{
-			push_b(s->stack_a, s->stack_b);
+			len = dlst_len(s->stack_b->head);
+			median = find_median(s, len);
+			while ((dlst_len(s->stack_b->head) > (len / 2)))
+			{
+				if (dlst_len(s->stack_b->head) <= 20)
+				{
+					selection_sort1(s, dlst_len(s->stack_b->head));
+					break ;
+				}
+				if (s->stack_b->head->pos >= median)
+					push_a(s->stack_b, s->stack_a);
+				else
+					rotate_b(s->stack_b);
+			}
 		}
-		selection_sort1(s, dlst_len(s->stack_b->head));
-		median += 25;
 	}
-	//while ((is_sorted(s->stack_a->head) != 1) && (dlst_len(s->stack_b->head) == 0))
-		//irst_sort(s);
-	//while (s->stack_a->head->pos <=)
-	// while ((is_sorted(s->stack_a->head) != 1) && (dlst_len(s->stack_b->head) == 0))
-	// {
-	// 	first_sort(s);
-	// 	while (s->stack_b->head)
-	// 	{
-	// 		len = dlst_len(s->stack_b->head);
-	// 		median = find_median(s, len);
-	// 		while ((dlst_len(s->stack_b->head) > (len / 2)))
-	// 		{
-	// 			if (dlst_len(s->stack_b->head) <= 20)
-	// 			{
-	// 				selection_sort1(s, dlst_len(s->stack_b->head));
-	// 				break ;
-	// 			}
-	// 			if (s->stack_b->head->pos >= median)
-	// 				push_a(s->stack_b, s->stack_a);
-	// 			else
-	// 				rotate_b(s->stack_b);
-	// 		}
-	// 	}
-	// }
 }
 
 void	first_sort(t_stacks *s)
@@ -175,29 +147,6 @@ void	selection_sort1(t_stacks *s, int len)
 		}
 		push_a(s->stack_b, s->stack_a);
 		rotate_a(s->stack_a);
-		len--;
-	}
-}
-
-void	selection_sort2(t_stacks *s, int len)
-{
-	int	small;
-	int	nb_location;
-
-	while (len > 0)
-	{
-		small = smallest_nb(s->stack_a);
-		//verify_small(s, &small, &len);
-		nb_location = which_half(s->stack_a, small);
-		while (s->stack_a->head->pos != small)
-		{
-			if (nb_location <= (len / 2))
-				rotate_a(s->stack_a);
-			else if (nb_location >= (len / 2))
-				reverse_rotate_a(s->stack_a);
-		}
-		push_b(s->stack_a, s->stack_b);
-		//rotate_a(s->stack_a);
 		len--;
 	}
 }
