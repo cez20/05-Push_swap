@@ -19,6 +19,177 @@ printf "\033[1;31mThis is the test  with : \033[0;32m 2000 1000\033[0m\n"
 ./push_swap 2000 1000
 #test to use defined color
 
+# TEST FOR 3
+printf "\n\n\e[1;94m------TESTING FOR 3 DIGITS------\e[0m\n\n"
+printf "\033[1;31mThis is the test  with : \033[0;32m 3 1 2\033[0m\n"
+./push_swap 3 1 2 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 3 2 1\033[0m\n"
+./push_swap 3 2 1 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 2 3 1\033[0m\n"
+./push_swap 2 3 1 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 2 1 3\033[0m\n"
+./push_swap 2 1 3 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 1 2 3\033[0m\n"
+./push_swap 1 2 3 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 1 3 2\033[0m\n"
+./push_swap 1 3 2 | wc -l
+
+# # TEST FOR 4
+printf "\n\n\e[1;94m------TESTING FOR 4 DIGITS------\e[0m\n\n"
+printf "\033[1;31mThis is the test  with : \033[0;32m 1 2 3 4\033[0m\n"
+./push_swap 1 2 3 4 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 1 2 4 3\033[0m\n"
+./push_swap 1 2 4 3 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 1 3 2 4\033[0m\n"
+./push_swap 1 3 2 4 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 1 3 4 2\033[0m\n"
+./push_swap 1 3 4 2 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 1 4 2 3\033[0m\n"
+./push_swap 1 4 2 3 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 1 4 3 2\033[0m\n"
+./push_swap 1 4 3 2 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 2 1 3 4\033[0m\n"
+./push_swap 2 1 3 4 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 2 1 4 3\033[0m\n"
+./push_swap 2 1 4 3 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 2 3 1 4\033[0m\n"
+./push_swap 2 3 1 4 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 2 3 4 1\033[0m\n"
+./push_swap 2 3 4 1 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 2 4 1 3\033[0m\n"
+./push_swap 2 4 1 3 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 2 4 3 1\033[0m\n"
+./push_swap 2 4 3 1 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 3 1 2 4\033[0m\n"
+./push_swap 3 1 2 4 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 3 1 4 2\033[0m\n"
+./push_swap 3 1 4 2 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 3 2 1 4\033[0m\n"
+./push_swap 3 2 1 4 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 3 2 4 1\033[0m\n"
+./push_swap 3 2 4 1 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 3 4 1 2\033[0m\n"
+./push_swap 3 4 1 2 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 3 4 2 1\033[0m\n"
+./push_swap 3 4 2 1 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 4 1 2 3\033[0m\n"
+./push_swap 4 1 2 3 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 4 1 3 2\033[0m\n"
+./push_swap 4 1 3 2 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 4 2 1 3\033[0m\n"
+./push_swap 4 2 1 3 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 4 2 3 1\033[0m\n"
+./push_swap 4 2 3 1 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 4 3 1 2\033[0m\n"
+./push_swap 4 3 1 2 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 4 3 2 1\033[0m\n"
+./push_swap 4 3 2 1 | wc -l
+
+
+# TEST FOR 5
+printf "\n\n\e[1;94m------TESTING FOR 5 DIGITS------\e[0m\n\n"
+printf "\033[1;31mThis is the test  with : \033[0;32m 4 3 2 1 5\033[0m\n"
+./push_swap 1 2 3 5 4 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 5 4 2 3 1\033[0m\n"
+./push_swap 5 4 2 3 1 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m \"5 4 2 3 1\"\033[0m\n"
+./push_swap "5 4 2 3 1" | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER \033[0m\n"
+ARG=`ruby -e "puts (10..14).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER \033[0m\n"
+ARG=`ruby -e "puts (10..14).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER \033[0m\n"
+ARG=`ruby -e "puts (10..14).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+
+
+
+
+# # TEST FOR 12 digits and more
+printf "\n\n\e[1;94m------TESTING FOR 12 and + DIGITS------\e[0m\n\n"
+printf "\033[1;31mThis is the test  with : \033[0;32m 2 3 5 12 10 6 9 7 4 1 8 11\033[0m\n"
+./push_swap 2 3 5 12 10 6 9 7 4 1 8 11 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 11 1 2 12 3 7 4 6 10 9 8 5\033[0m\n"
+./push_swap 11 1 2 12 3 7 4 6 10 9 8 5 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m 9 5 4 10 8 6 2 7 1 3 11 12\033[0m\n"
+./push_swap 9 5 4 10 8 6 2 7 1 3 11 12 | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 12 numbers \033[0m\n"
+ARG=`ruby -e "puts (10..21).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 12 numbers \033[0m\n"
+ARG=`ruby -e "puts (10..21).to_a.shuffle.join(' ')"`; ./push_swap $ARG  | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 12 numbers \033[0m\n"
+ARG=`ruby -e "puts (10..21).to_a.shuffle.join(' ')"`; ./push_swap $ARG  | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 12 numbers \033[0m\n"
+ARG=`ruby -e "puts (10..21).to_a.shuffle.join(' ')"`; ./push_swap $ARG  | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 12 numbers \033[0m\n"
+ARG=`ruby -e "puts (10..21).to_a.shuffle.join(' ')"`; ./push_swap $ARG  | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 12 numbers \033[0m\n"
+ARG=`ruby -e "puts (10..21).to_a.shuffle.join(' ')"`; ./push_swap $ARG  | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 12 numbers \033[0m\n"
+ARG=`ruby -e "puts (10..21).to_a.shuffle.join(' ')"`; ./push_swap $ARG  | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 12 numbers \033[0m\n"
+ARG=`ruby -e "puts (10..21).to_a.shuffle.join(' ')"`; ./push_swap $ARG  | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 12 numbers \033[0m\n"
+ARG=`ruby -e "puts (10..21).to_a.shuffle.join(' ')"`; ./push_swap $ARG  | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 12 numbers \033[0m\n"
+ARG=`ruby -e "puts (10..21).to_a.shuffle.join(' ')"`; ./push_swap $ARG  | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 25 numbers \033[0m\n"
+ARG=`ruby -e "puts (10..34).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 50 numbers \033[0m\n"
+ARG=`ruby -e "puts (10..59).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 100 numbers \033[0m\n"
+ARG=`ruby -e "puts (10..109).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 100 numbers \033[0m\n"
+ARG=`ruby -e "puts (10..109).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 100 numbers \033[0m\n"
+ARG=`ruby -e "puts (10..109).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 100 numbers \033[0m\n"
+ARG=`ruby -e "puts (10..109).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 100 numbers \033[0m\n"
+ARG=`ruby -e "puts (10..109).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 100 numbers \033[0m\n"
+ARG=`ruby -e "puts (10..109).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 100 numbers \033[0m\n"
+ARG=`ruby -e "puts (10..109).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 100 numbers \033[0m\n"
+ARG=`ruby -e "puts (10..109).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 100 numbers \033[0m\n"
+ARG=`ruby -e "puts (10..109).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 100 numbers \033[0m\n"
+ARG=`ruby -e "puts (10..109).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 100 numbers \033[0m\n"
+ARG=`ruby -e "puts (10..109).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 100 numbers \033[0m\n"
+ARG=`ruby -e "puts (10..109).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 500 numbers \033[0m\n"
+ARG=`ruby -e "puts (0..499).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 500 numbers \033[0m\n"
+ARG=`ruby -e "puts (0..499).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 500 numbers \033[0m\n"
+ARG=`ruby -e "puts (0..499).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 500 numbers \033[0m\n"
+ARG=`ruby -e "puts (0..499).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 500 numbers \033[0m\n"
+ARG=`ruby -e "puts (0..499).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 500 numbers \033[0m\n"
+ARG=`ruby -e "puts (0..499).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 500 numbers \033[0m\n"
+ARG=`ruby -e "puts (0..499).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 500 numbers \033[0m\n"
+ARG=`ruby -e "puts (0..499).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 500 numbers \033[0m\n"
+ARG=`ruby -e "puts (0..499).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 500 numbers \033[0m\n"
+ARG=`ruby -e "puts (0..499).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 500 numbers \033[0m\n"
+ARG=`ruby -e "puts (0..499).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 500 numbers \033[0m\n"
+ARG=`ruby -e "puts (0..499).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 500 numbers \033[0m\n"
+ARG=`ruby -e "puts (0..499).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 500 numbers \033[0m\n"
+ARG=`ruby -e "puts (0..499).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+
+
 #TESTING FOR PROBLEMS
 printf "\n\n\e[1;94m------TESTING FOR PROBLEMS------\e[0m\n\n"
 printf "\033[1;31mThis is the test  with : \033[0;32m1\033[0m\n"
@@ -47,19 +218,18 @@ printf "\033[1;31mThis is the test with argument other than INT (letter) in a st
 ./push_swap "10 20 YO 40 50"
 printf "\033[1;31mThis is the test with argument other than INT (letter) in a string : \033[0;32m'10 20 ? 40 50'\033[0m\n"
 ./push_swap "10 20 ? 40 50"
-printf "\033[1;31mThis is the test with number '0' in a string : \033[0;32m'10 20 , 40 50'\033[0m\n"
+printf "\033[1;31mThis is the test with symbol ',' in a string : \033[0;32m'10 20 , 40 50'\033[0m\n"
 ./push_swap "10 20 , 40 50"
-printf "\033[1;31mThis is the test with number '0' in a string : \033[0;32m'10 20 / 40 50'\033[0m\n"
+printf "\033[1;31mThis is the test with symbol '/' in a string : \033[0;32m'10 20 / 40 50'\033[0m\n"
 ./push_swap "10 20 / 40 50"
-printf "\033[1;31mThis is the test with number '0' in a string : \033[0;32m'10 20 . 40 50'\033[0m\n"
+printf "\033[1;31mThis is the test with symbol '.' in a string : \033[0;32m'10 20 . 40 50'\033[0m\n"
 ./push_swap "10 20 . 40 50"
-printf "\033[1;31mThis is the test with number '0' in a string : \033[0;32m'10 20 0 40 50'\033[0m\n"
-./push_swap "10 20 0 40 50"
-printf "\033[1;31mThis is the test with number '0' in a string : \033[0;32m'10 20 15 40 50'\033[0m\n"
-./push_swap "10 20 15 40 50"
+
 
 printf "\n\n\e[1;94m------VALIDATING IF ANY MEMORY LEAKS------\e[0m\n\n"
-leaks -atExit -- ./push_swap 1 4 6 5 
-
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 10 numbers \033[0m\n"
+ARG=`ruby -e "puts (1..10).to_a.shuffle.join(' ')"`; leaks -atExit -- ./push_swap $ARG 
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 10 numbers \033[0m\n"
+ARG=`ruby -e "puts (1..10).to_a.shuffle.join(' ')"`; leaks -atExit -- ./push_swap $ARG 
 
 printf "\n\n\e[1;94m------END OF TESTS------\e[0m\n\n"

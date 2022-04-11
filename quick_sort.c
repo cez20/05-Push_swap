@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 20:51:45 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/10 15:09:13 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/10 21:32:40 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	quick_sort(t_stacks *s, int len)
 			median = find_median(s, len);
 			while ((dlst_len(s->stack_b->head) > (len / 2)))
 			{
-				if (dlst_len(s->stack_b->head) <= 20)
+				if (dlst_len(s->stack_b->head) <= 45)
 				{
 					selection_sort1(s, dlst_len(s->stack_b->head));
 					break ;
@@ -63,7 +63,7 @@ void	first_sort(t_stacks *s)
 		else
 			push_b(s->stack_a, s->stack_b);
 	}
-	if (dlst_len(s->stack_b->head) <= 20)
+	if (dlst_len(s->stack_b->head) <= 45)
 		selection_sort1(s, dlst_len(s->stack_b->head));
 }
 
@@ -116,10 +116,10 @@ void	push_back_to_a(t_stacks *s, int count) // Cette fonction devra etre amelior
 {
 	int	new_median;
 
-	while (count > 20)
+	while (count > 45)
 	{
 		new_median = count / 2;
-		while ((count > 20) && (count > new_median))
+		while ((count > 45) && (count > new_median))
 		{
 			if (s->stack_b->head->pos > new_median)
 			{
