@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 14:06:20 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/10 17:57:02 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/11 17:25:52 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	reverse_rotate_b(t_stack *stack)
 {
 	t_dlist	*temp;
 
-	if (stack->head && stack->tail)
+	if (stack->head != stack->tail && stack->head && stack->tail)
 	{
 		temp = stack->tail->prev;
 		temp->next = NULL;

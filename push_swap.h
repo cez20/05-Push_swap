@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:04:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/10 17:55:39 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/11 17:31:02 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,12 @@ int			biggest_nb(t_stack *stack);
 // *** QUICK_SORT.C ***
 void		quick_sort(t_stacks *s, int len);
 void		quick_sort1(t_stacks *s, int len);
+void		selection_sort1(t_stacks *s, int len);
 void		selection_sort2(t_stacks *s, int len);
 void		push_back_to_a(t_stacks *s, int count);
 int			find_median(t_stacks *s, int len);
 void		bubble_sort(int *tab, int size);
-void		first_sort(t_stacks *s);
+void		push_chunk(t_stacks *s, int *top);
 void		selection_sort1(t_stacks *s, int len);
 int			*verify_small(t_stacks *s, int *small, int *len);
 
