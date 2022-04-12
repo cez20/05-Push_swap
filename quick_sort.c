@@ -6,29 +6,11 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 20:51:45 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/11 18:00:42 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/12 11:03:19 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// void	quick_sort(t_stacks *s, int len)
-// {
-// 	int	median;
-
-// 	median = (len / 2);
-// 	while (dlst_len(s->stack_a->head) > 25)
-// 	{
-// 		while (dlst_len(s->stack_b->head) < median)
-// 		{
-// 			if (s->stack_a->head->pos <= median)
-// 				push_b(s->stack_a, s->stack_b);
-// 			else
-// 				rotate_a(s->stack_a);
-// 		}
-// 		median += (dlst_len(s->stack_a->head) / 2);
-// 	}
-// 	push_back_to_a(s, dlst_len(s->stack_b->head));
 
 void	quick_sort(t_stacks *s, int len)
 {
@@ -66,6 +48,27 @@ void	quick_sort(t_stacks *s, int len)
 	}
 }
 
+void	push_back_to_a(t_stacks *s, int count) // Cette fonction devra etre ameliorer pour sur
+{
+	int	new_median;
+
+	while (count > 20)
+	{
+		new_median = count / 2;
+		while ((count > 20) && (count > new_median))
+		{
+			if (s->stack_b->head->pos > new_median)
+			{
+				push_a(s->stack_b, s->stack_a);
+				count--;
+			}
+			else
+				rotate_b(s->stack_b);
+		}
+	}
+	selection_sort1(s, count);
+}
+
 void	push_chunk(t_stacks *s, int *top)
 {
 	if (s->stack_a->head->pos == *top)
@@ -78,7 +81,7 @@ void	push_chunk(t_stacks *s, int *top)
 			push_b(s->stack_a, s->stack_b);
 	}
 	if (dlst_len(s->stack_b->head) <= 20)
-		selection_sort1(s, dlst_len(s->stack_b->head));
+		selection_sort2(s, dlst_len(s->stack_b->head));
 }
 
 int	find_median(t_stacks *s, int len)
@@ -126,27 +129,6 @@ void	bubble_sort(int *tab, int size)
 	}
 }
 
-void	push_back_to_a(t_stacks *s, int count) // Cette fonction devra etre ameliorer pour sur
-{
-	int	new_median;
-
-	while (count > 20)
-	{
-		new_median = count / 2;
-		while ((count > 20) && (count > new_median))
-		{
-			if (s->stack_b->head->pos > new_median)
-			{
-				push_a(s->stack_b, s->stack_a);
-				count--;
-			}
-			else
-				rotate_b(s->stack_b);
-		}
-	}
-	selection_sort1(s, count);
-}
-
 void	selection_sort1(t_stacks *s, int len)
 {
 	int	small;
@@ -178,7 +160,6 @@ void	selection_sort2(t_stacks *s, int len)
 	while (len > 0)
 	{
 		big = biggest_nb(s->stack_b);
-		
 		nb_location = which_half(s->stack_b, big);
 		while (s->stack_b->head->pos != big)
 		{
@@ -188,26 +169,15 @@ void	selection_sort2(t_stacks *s, int len)
 				rotate_a(s->stack_a);
 				len--;	
 			}
-			if (nb_location <= (len / 2))
+			else if (nb_location <= (len / 2))
 				rotate_b(s->stack_b);
-			else if (nb_location >= (len / 2))
+			else 
 				reverse_rotate_b(s->stack_b);
 		}
 		push_a(s->stack_b, s->stack_a);
 		len--;
 	}
 }
-
-// int	*verify_big(t_stacks *s, int *big, int *len) // CEtte fonction pourrait eviter quelques va et vient.  
-// {
-// 	while (*big != (s->stack_a->head->pos - 1))
-// 	{
-// 		push_b(s->stack_a, s->stack_b);
-// 		(*len)++;
-// 		*big = smallest_nb(s->stack_b);
-// 	}
-// 	return (big);
-// }
 
 int	*verify_small(t_stacks *s, int *small, int *len)
 {
