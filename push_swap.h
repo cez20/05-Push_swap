@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:04:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/11 17:31:02 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/12 22:34:25 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,19 @@
 # include <unistd.h>
 # include <stdlib.h> // Pas necessaire pcq deja dans libft?
 # include <stdio.h>  // Pas necessaire pcq deja dans libft?
-# include <stdbool.h>  // Verifier ce qu'est le contenu de cette library
 
-typedef struct s_dlist
+typedef struct s_node
 {
 	int				data;
-	struct s_dlist	*next;
-	struct s_dlist	*prev;
-	int				pos;
-}					t_dlist;
+	struct s_node	*prev;
+	struct s_node	*next;
+	int				index;
+}					t_node;
 
 typedef struct s_stack
 {
-	struct s_dlist	*head;
-	struct s_dlist	*tail;
+	struct s_node	*head;
+	struct s_node	*tail;
 }					t_stack;
 
 typedef struct s_stacks
@@ -44,26 +43,26 @@ typedef struct s_stacks
 int			main(int argc, char **argv);
 
 // *** STACKS.C ***
-t_stacks	*initialize_stacks(void);
-void		clear_stacks(t_stacks *stacks);
+t_stacks	*create_stacks(void);
+void		free_stacks(t_stacks *stacks);
 
 // *** ARGS_VALIDATION.C ***
-void		int_validation(char **argv);
+void		args_validation(char **argv);
 void		check_duplicate(char **argv, int i);
 void		check_if_int(char **str, int i);
 long		ft_atol(const char *str);
 int			ft_strchr1(const char *s, int c);
 
-// *** DLIST_CREATION.C ***
-void		dlist_creation(t_stack *stack_a, char **argv);
-t_dlist		*dlst_new(int content);
-void		dlst_add_back(t_dlist **head, t_dlist *new);
-t_dlist		*dlst_last(t_dlist *lst);
+// *** NODE_CREATION.C ***
+void		create_nodes(t_stack *stack_a, char **argv);
+t_node		*node_new(int content);
+void		node_add_back(t_node **head, t_node *new);
+t_node		*node_last(t_node *lst);
 void		free_args(char **args, int i, int j);
 
-// *** DLIST_MAINTENANCE.C ***
-int			dlst_len(t_dlist *lst);
-void		dlst_clear(t_stack *stack);
+// *** NODE_MAINTENANCE.C ***
+int			nodes_len(t_node *lst);
+void		node_deletion(t_stack *stack);
 
 // *** OPERATIONS_A.C ***
 void		swap_a(t_stack *stack);
@@ -97,9 +96,9 @@ void		selection_sort1(t_stacks *s, int len);
 int			*verify_small(t_stacks *s, int *small, int *len);
 
 // *** UTILS.C   ***
-void		positioning(int len, t_dlist *lst);
-void		print_dlist(t_dlist *head);
-int			is_sorted(t_dlist *lst);
+void		indexing(int len, t_node *lst);
+void		print_node(t_node *head);
+int			is_sorted(t_node *lst);
 void		error(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 15:12:21 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/11 10:32:45 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/12 23:59:05 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	quick_sort(t_stacks *s, int len)
 
 	while (dlst_len(s->stack_b->head) < (len / 2))
 	{
-		if (s->stack_a->head->pos <= (len / 2))
+		if (s->stack_a->head->index <= (len / 2))
 			push_b(s->stack_a, s->stack_b);
 		else
 			rotate_a(s->stack_a);
@@ -40,7 +40,7 @@ void	quick_sort(t_stacks *s, int len)
 					selection_sort1(s, dlst_len(s->stack_b->head));
 					break ;
 				}
-				if (s->stack_b->head->pos >= median)
+				if (s->stack_b->head->index >= median)
 					push_a(s->stack_b, s->stack_a);
 				else
 					rotate_b(s->stack_b);
@@ -51,9 +51,9 @@ void	quick_sort(t_stacks *s, int len)
 
 void	first_sort(t_stacks *s)
 {
-	while (s->stack_a->head->pos != 1)
+	while (s->stack_a->head->index != 1)
 	{
-		if (s->stack_a->head->pos == s->stack_a->tail->pos + 1)
+		if (s->stack_a->head->index == s->stack_a->tail->index + 1)
 			rotate_a(s->stack_a);
 		else
 			push_b(s->stack_a, s->stack_b);
@@ -64,7 +64,7 @@ void	first_sort(t_stacks *s)
 
 int	find_median(t_stacks *s, int len)
 {
-	t_dlist	*temp;
+	t_node	*temp;
 	int		temp_stack[500];
 	int		i;
 	int		median;
@@ -73,7 +73,7 @@ int	find_median(t_stacks *s, int len)
 	temp = s->stack_b->head;
 	while (temp)
 	{
-		temp_stack[i++] = temp->pos;
+		temp_stack[i++] = temp->index;
 		temp = temp->next;
 	}
 	temp_stack[i] = '\0';
@@ -107,7 +107,7 @@ void	bubble_sort(int *tab, int size)
 	}
 }
 
-void	push_back_to_a(t_stacks *s, int count) // Cette fonction devra etre ameliorer pour sur
+void	push_back_to_a(t_stacks *s, int count) // Cette partie est assez similaire a celle de la deuxieme boucle de quick_sort 
 {
 	int	new_median;
 
@@ -116,7 +116,7 @@ void	push_back_to_a(t_stacks *s, int count) // Cette fonction devra etre amelior
 		new_median = count / 2;
 		while ((count > 20) && (count > new_median))
 		{
-			if (s->stack_b->head->pos > new_median)
+			if (s->stack_b->head->index > new_median)
 			{
 				push_a(s->stack_b, s->stack_a);
 				count--;
@@ -136,9 +136,9 @@ void	selection_sort1(t_stacks *s, int len)
 	while (len > 0)
 	{
 		small = smallest_nb(s->stack_b);
-		verify_small(s, &small, &len);
+		verify_small(s, &small, &len); // Cette ligne est differente 
 		nb_location = which_half(s->stack_b, small);
-		while (s->stack_b->head->pos != small)
+		while (s->stack_b->head->index != small)
 		{
 			if (nb_location <= (len / 2))
 				rotate_b(s->stack_b);
@@ -146,14 +146,14 @@ void	selection_sort1(t_stacks *s, int len)
 				reverse_rotate_b(s->stack_b);
 		}
 		push_a(s->stack_b, s->stack_a);
-		rotate_a(s->stack_a);
+		rotate_a(s->stack_a); //Cette ligne est differente 
 		len--;
 	}
 }
 
 int	*verify_small(t_stacks *s, int *small, int *len)
 {
-	while (*small != (s->stack_a->tail->pos + 1))
+	while (*small != (s->stack_a->tail->index + 1))
 	{
 		if (*small == 1)
 			break ;

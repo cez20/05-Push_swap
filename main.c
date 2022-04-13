@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:36:43 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/10 21:30:38 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/12 23:57:45 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,23 @@
 int	main(int argc, char **argv)
 {
 	t_stacks	*stacks;
-	int			length;
+	int			len;
 
 	if (argc >= 2)
 	{
-		int_validation(argv);
-		stacks = initialize_stacks();
-		dlist_creation(stacks->stack_a, argv);
-		length = dlst_len(stacks->stack_a->head);
-		positioning(length, stacks->stack_a->head);
+		args_validation(argv);
+		stacks = create_stacks();
+		create_nodes(stacks->stack_a, argv);
+		len = nodes_len(stacks->stack_a->head);
+		indexing(len, stacks->stack_a->head);
+		//print_node(stacks->stack_a->head);
 		if (is_sorted(stacks->stack_a->head) == 1)
 			return (0);
-		if (length <= 5)
-			selection_sort(stacks, length);
-		if (length > 5)
-			quick_sort(stacks, length);
-		clear_stacks(stacks);
+		if (len <= 5)
+			selection_sort(stacks, len);
+		if (len > 5)
+			quick_sort(stacks, len);
+		free_stacks(stacks);
 	}
 	return (0);
 }
-
-//print_dlist(stacks->stack_a->head);
-/*while (stacks->stack_a->head)
-		{
-			printf("%d\n", stacks->stack_a->head->pos);
-			stacks->stack_a->head = stacks->stack_a->head->next;
-}*/

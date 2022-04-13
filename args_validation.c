@@ -6,13 +6,13 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 20:06:50 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/10 16:36:48 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/12 22:12:37 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	int_validation(char **argv)
+void	args_validation(char **argv)
 {
 	char	**args;
 

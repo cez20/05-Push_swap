@@ -6,58 +6,59 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 15:45:01 by cezmenji          #+#    #+#             */
-/*   Updated: 2022/04/10 12:32:29 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/12 23:34:04 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	positioning(int len, t_dlist *lst)
+void	indexing(int len, t_node *lst)
 {
-	t_dlist	*temp;
-	t_dlist	*smallest;
-	int		pos;
+	t_node	*temp;
+	t_node	*smallest;
+	int		index;
 
-	pos = 1;
-	while (pos <= len)
+	index = 1;
+	while (index <= len)
 	{
 		temp = lst;
-		while (temp->pos != 0)
+		while (temp->index != 0)
 			temp = temp->next;
 		smallest = temp;
 		while (temp != NULL)
 		{
-			if (smallest->data > temp->data && temp->pos == 0)
+			if (smallest->data > temp->data && temp->index == 0)
 				smallest = temp;
 			temp = temp->next;
 		}
-		smallest->pos = pos;
-		pos++;
+		smallest->index = index;
+		index++;
 	}
 }
 
-void	print_dlist(t_dlist *head)
+void	print_node(t_node *head)
 {
 	int	i;
 
 	i = 1;
+	printf("NUMBERS		INDEX\n");
 	while (head != NULL)
 	{
-		printf("%d is %d position from the top of linked list\n", head->data, i);
+		printf("%d		[%d]\n", head->data, head->index);
 		head = head->next;
 		i++;
 	}
 	printf("\n");
 }
 
-int	is_sorted(t_dlist *lst)
+int	is_sorted(t_node *node)
 {
-	if (lst->pos != 1)
+	if (node->index != 1)
 		return (0);
-	while (lst->next)
+	while (node->next)
 	{
-		if (lst->data < lst->next->data)
-			lst = lst->next;
+		if (node->data < node->next->data)
+			node = node->next;
 		else
 			return (0);
 	}

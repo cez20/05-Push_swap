@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:27:32 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/10 17:55:20 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/12 21:35:38 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	swap_a(t_stack *stack)
 {
-	t_dlist	*temp;
+	t_node	*temp;
 
 	if (stack->head && stack->tail)
 	{	
@@ -34,7 +34,7 @@ void	swap_a(t_stack *stack)
 
 void	rotate_a(t_stack *stack)
 {
-	t_dlist	*temp;
+	t_node	*temp;
 
 	if (stack->head && stack->tail)
 	{	
@@ -51,7 +51,7 @@ void	rotate_a(t_stack *stack)
 
 void	reverse_rotate_a(t_stack *stack)
 {
-	t_dlist	*temp;
+	t_node	*temp;
 
 	if (stack->head && stack->tail)
 	{
@@ -67,7 +67,7 @@ void	reverse_rotate_a(t_stack *stack)
 
 void	push_a(t_stack *stack_b, t_stack *stack_a)
 {
-	t_dlist	*temp;
+	t_node	*temp;
 
 	temp = stack_a->head;
 	if (!stack_a->head)

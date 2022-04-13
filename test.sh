@@ -1,29 +1,34 @@
 #!/bin/bash
 # Color code
+# Where there is a '1' before the semi-colon this means that the color is BOLD (1), otherwise not bold (0)
 RED="\033[1;31m"
 GREEN="\033[0;32m"
 LIGRAY="\e[37m"
 YELLOW="\033[0;33m"
+RESET="\033[0m\n"
 
-#Test for colors (2 ways of writing this)
-# Where there is a '1' before the semi-colon this means that the color is BOLD (1), otherwise not bold (0)
-printf "\033[0;33mThis is the test for COLORS with : \033[0;33m2000 1000\033[0m\n"
-printf $YELLOW"This is the test for COLORS with : $YELLOW 2000 1000\033[0m\n"
-printf ${YELLOW}"This is the test for COLORS with : ${YELLOW}2000 1000\033[0m\n"
+# TEST FOR COLORS 
+printf "\n\n\e[1;94m------TESTING FOR COLORS------\e[0m\n\n"
+printf "\n\033[0;33mThis text is in YELLOW: \033[0;33m2000 1000\033[0m\n"
+printf ${YELLOW}"This text is in YELLOW: ${YELLOW}2000 1000"${RESET}
 
-#TESTING THE INPUT
+# COMPILING THE PROGRAM
+printf "\n\n\e[1;94m------COMPILING THE PROGRAM-----\e[0m\n\n"
 make 
-#test for 2
+
+printf "\n\n\e[1;94m------COMPILING THE PROGRAM-----\e[0m\n\n"
+
+
+# TEST FOR 2 NUMBERS
 printf "\n\n\e[1;94m------TESTING FOR 2 DIGITS------\e[0m\n\n"
 printf "\033[1;31mThis is the test  with : \033[0;32m 2000 1000\033[0m\n"
-./push_swap 2000 1000
-#test to use defined color
+./push_swap 2000 1000 | wc -l
 
-# TEST FOR 3
+# TEST FOR 3 NUMBERS 
 printf "\n\n\e[1;94m------TESTING FOR 3 DIGITS------\e[0m\n\n"
-printf "\033[1;31mThis is the test  with : \033[0;32m 3 1 2\033[0m\n"
+printf "\033[1;31mThis is the test  with : ${GREEN} 3 1 2${RESET}"
 ./push_swap 3 1 2 | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m 3 2 1\033[0m\n"
+printf "\033[1;31mThis is the test  with : ${GREEN} 3 1 2${RESET}"
 ./push_swap 3 2 1 | wc -l
 printf "\033[1;31mThis is the test  with : \033[0;32m 2 3 1\033[0m\n"
 ./push_swap 2 3 1 | wc -l
@@ -85,7 +90,6 @@ printf "\033[1;31mThis is the test  with : \033[0;32m 4 3 1 2\033[0m\n"
 printf "\033[1;31mThis is the test  with : \033[0;32m 4 3 2 1\033[0m\n"
 ./push_swap 4 3 2 1 | wc -l
 
-
 # TEST FOR 5
 printf "\n\n\e[1;94m------TESTING FOR 5 DIGITS------\e[0m\n\n"
 printf "\033[1;31mThis is the test  with : \033[0;32m 4 3 2 1 5\033[0m\n"
@@ -100,9 +104,6 @@ printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER \033[0m\n"
 ARG=`ruby -e "puts (10..14).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
 printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER \033[0m\n"
 ARG=`ruby -e "puts (10..14).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
-
-
-
 
 # # TEST FOR 12 digits and more
 printf "\n\n\e[1;94m------TESTING FOR 12 and + DIGITS------\e[0m\n\n"

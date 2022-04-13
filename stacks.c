@@ -6,13 +6,13 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:39:29 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/03/15 11:45:51 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/12 22:19:31 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stacks	*initialize_stacks(void)
+t_stacks	*create_stacks(void)
 {
 	t_stacks	*temp;
 	t_stack		*stack_a;
@@ -28,10 +28,10 @@ t_stacks	*initialize_stacks(void)
 	return (temp);
 }
 
-void	clear_stacks(t_stacks *stacks)
+void	free_stacks(t_stacks *stacks)
 {
-	dlst_clear(stacks->stack_a);
-	dlst_clear(stacks->stack_b);
+	node_deletion(stacks->stack_a);
+	node_deletion(stacks->stack_b);
 	free(stacks->stack_a);
 	free(stacks->stack_b);
 	free(stacks);

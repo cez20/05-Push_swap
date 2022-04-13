@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dlist_creation.c                                   :+:      :+:    :+:   */
+/*   node_creation.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:36:43 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/10 12:13:37 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/12 22:04:22 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	dlist_creation(t_stack *stack_a, char **argv)
+void	create_nodes(t_stack *stack_a, char **argv)
 {
-	t_dlist	*temp;
+	t_node	*temp;
 	char	**args;
 	int		i;
 	int		j;
@@ -26,33 +26,33 @@ void	dlist_creation(t_stack *stack_a, char **argv)
 		args = ft_split(argv[i++], ' ');
 	while (args[j])
 	{
-		temp = dlst_new(ft_atoi(args[j++]));
-		dlst_add_back(&stack_a->head, temp);
+		temp = node_new(ft_atoi(args[j++]));
+		node_add_back(&stack_a->head, temp);
 	}
-	stack_a->tail = dlst_last(stack_a->head);
+	stack_a->tail = node_last(stack_a->head);
 	free_args(args, i, j);
 }
 
-t_dlist	*dlst_new(int data)
+t_node	*node_new(int data)
 {
-	t_dlist	*list;
+	t_node	*node;
 
-	list = malloc(sizeof(*list));
-	if (!list)
+	node = malloc(sizeof(*node));
+	if (!node)
 	{
 		ft_putstr_fd("Malloc failed\n", 2);
 		exit(EXIT_FAILURE);
 	}
-	list->data = data;
-	list->next = NULL;
-	list->prev = NULL;
-	list->pos = 0;
-	return (list);
+	node->data = data;
+	node->next = NULL;
+	node->prev = NULL;
+	node->index = 0;
+	return (node);
 }
 
-void	dlst_add_back(t_dlist **head, t_dlist *new)
+void	node_add_back(t_node **head, t_node *new)
 {
-	t_dlist	*temp;
+	t_node	*temp;
 
 	if (*head == NULL)
 	{
@@ -62,20 +62,20 @@ void	dlst_add_back(t_dlist **head, t_dlist *new)
 	}
 	else
 	{
-		temp = dlst_last(*head);
+		temp = node_last(*head);
 		temp->next = new;
 		new->prev = temp;
 	}
 }
 
-t_dlist	*dlst_last(t_dlist *lst)
+t_node	*node_last(t_node *node)
 {
-	if (lst)
+	if (node)
 	{
-		while (lst->next)
-			lst = lst->next;
+		while (node->next)
+			node = node->next;
 	}
-	return (lst);
+	return (node);
 }
 
 void	free_args(char **args, int i, int j)
