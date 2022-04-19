@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 20:51:45 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/13 00:15:38 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/19 14:49:21 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,53 +48,27 @@ void	quick_sort(t_stacks *s, int len)
 	}
 }
 
-// void	push_back_to_a(t_stacks *s, int count) // Cette fonction est assez similaire a celle qui se trouve dans la 2eme boucle while.  
-// {
-// 	int	new_median;
-
-// 	while (count > 20)
-// 	{
-// 		new_median = count / 2;
-// 		while ((count > 20) && (count > new_median))
-// 		{
-// 			if (s->stack_b->head->index > new_median)
-// 			{
-// 				push_a(s->stack_b, s->stack_a);
-// 				count--;
-// 			}
-// 			else
-// 				rotate_b(s->stack_b);
-// 		}
-// 		selection_sort1(s, count);
-// 	}
-// 	selection_sort1(s, count);
-// }
-
-void	push_back_to_a(t_stacks *s, int len) // Cette fonction est assez similaire
+void	push_back_to_a(t_stacks *s, int count)
 {
-	int median;
-	
-	while (s->stack_b->head)
+	int	new_median;
+
+	while (count > 20)
 	{
-		len = nodes_len(s->stack_b->head);
-		median = find_median(s, len);
-		while (nodes_len(s->stack_b->head) > (len / 2))
+		new_median = count / 2;
+		while ((count > 20) && (count > new_median))
 		{
-			if (nodes_len(s->stack_b->head) <= 20)
+			if (s->stack_b->head->index > new_median)
 			{
-				selection_sort2(s, nodes_len(s->stack_b->head));
-				break ;
-			}
-			if (s->stack_b->head->index >= median)
 				push_a(s->stack_b, s->stack_a);
+				count--;
+			}
 			else
 				rotate_b(s->stack_b);
 		}
+		//selection_sort1(s, count);
 	}
-	if (s->stack_a->head->index == 1 && is_sorted(s->stack_a->head) != 1)
-		rotate_a(s->stack_a);
+	selection_sort1(s, count);
 }
-
 
 void	push_chunk(t_stacks *s, int *top)
 {
