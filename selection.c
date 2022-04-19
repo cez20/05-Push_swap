@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 15:24:18 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/12 21:53:27 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/19 18:34:06 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,25 @@ void	selection_sort(t_stacks *s, int len)
 		push_b(s->stack_a, s->stack_b);
 		len--;
 	}
-	simple_sort(s);
+	sort_three(s);
 	while (s->stack_b->head != NULL)
 		push_a(s->stack_b, s->stack_a);
 }
 
-void	simple_sort(t_stacks *s)
+void	sort_three(t_stacks *s)
 {
-	int	big;
-	int	small;
+	t_node	*temp;
+	int		big;
+	int		small;
 
+	temp = s->stack_a->head;
 	small = smallest_nb(s->stack_a);
 	big = biggest_nb(s->stack_a);
-	if (s->stack_a->head->index == big)
+	if (temp->index == big)
 		rotate_a(s->stack_a);
-	else if (s->stack_a->head->next->index == big)
+	else if (temp->next->index == big)
 		reverse_rotate_a(s->stack_a);
-	if (s->stack_a->head->next->index == small && s->stack_a->tail->index == big)
+	if (temp->next->index == small && s->stack_a->tail->index == big)
 		swap_a(s->stack_a);
 }
 

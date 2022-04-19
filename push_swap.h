@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:04:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/12 22:34:25 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/19 18:21:17 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
-# include <limits.h>  // Necessaire afin de mettre INT_MIN INT_MAX 
+# include <limits.h> 
 # include <unistd.h>
-# include <stdlib.h> // Pas necessaire pcq deja dans libft?
-# include <stdio.h>  // Pas necessaire pcq deja dans libft?
+# include <stdlib.h> 
+# include <stdio.h>  
 
 typedef struct s_node
 {
@@ -60,9 +60,10 @@ void		node_add_back(t_node **head, t_node *new);
 t_node		*node_last(t_node *lst);
 void		free_args(char **args, int i, int j);
 
-// *** NODE_MAINTENANCE.C ***
+// *** NODE_UTILS.C ***
 int			nodes_len(t_node *lst);
 void		node_deletion(t_stack *stack);
+void		print_node(t_node *head);
 
 // *** OPERATIONS_A.C ***
 void		swap_a(t_stack *stack);
@@ -78,27 +79,23 @@ void		push_b(t_stack *stack_a, t_stack *stack_b);
 
 // *** SELECTION.C ***
 void		selection_sort(t_stacks *s, int len);
-void		simple_sort(t_stacks *s);
+void		sort_three(t_stacks *s);
 int			which_half(t_stack *stack, int small);
 int			smallest_nb(t_stack *stack);
 int			biggest_nb(t_stack *stack);
 
 // *** QUICK_SORT.C ***
 void		quick_sort(t_stacks *s, int len);
-void		quick_sort1(t_stacks *s, int len);
+void		first_sort(t_stacks *s, int len, int *top);
+void		push_to_a(t_stacks *s, int count);
 void		selection_sort1(t_stacks *s, int len);
-void		selection_sort2(t_stacks *s, int len);
-void		push_back_to_a(t_stacks *s, int count);
-int			find_median(t_stacks *s, int len);
-void		bubble_sort(int *tab, int size);
 void		push_chunk(t_stacks *s, int *top);
-void		selection_sort1(t_stacks *s, int len);
-int			*verify_small(t_stacks *s, int *small, int *len);
 
 // *** UTILS.C   ***
 void		indexing(int len, t_node *lst);
-void		print_node(t_node *head);
 int			is_sorted(t_node *lst);
+void		bubble_sort(int *tab, int size);
+int			find_median(t_stacks *s, int len);
 void		error(void);
 
 #endif
