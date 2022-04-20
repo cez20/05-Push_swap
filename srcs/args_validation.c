@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 20:06:50 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/12 22:12:37 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/19 22:19:41 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ long	ft_atol(const char *str)
 		number = number * 10 + str[i] - '0';
 		i++;
 	}
+	if (str[i] != '\0')
+		error();
 	if ((nb_neg % 2) == 1)
 		return (number * -1);
 	return (number);
