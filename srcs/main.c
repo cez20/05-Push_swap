@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:36:43 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/19 22:07:55 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/20 09:46:32 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 		create_nodes(stacks->stack_a, argv);
 		len = nodes_len(stacks->stack_a->head);
 		indexing(len, stacks->stack_a->head);
-		if (is_sorted(stacks->stack_a->head) == 1)
+		if (is_sorted(stacks->stack_a->head) == 0)
 		{
 			free_stacks(stacks);
 			return (0);

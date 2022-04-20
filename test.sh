@@ -51,44 +51,7 @@ printf "\033[1;31mThis is the test  with : \033[0;32m 1 3 4 2\033[0m\n"
 ./push_swap 1 3 4 2 | wc -l
 printf "\033[1;31mThis is the test  with : \033[0;32m 1 4 2 3\033[0m\n"
 ./push_swap 1 4 2 3 | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m 1 4 3 2\033[0m\n"
-./push_swap 1 4 3 2 | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m 2 1 3 4\033[0m\n"
-./push_swap 2 1 3 4 | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m 2 1 4 3\033[0m\n"
-./push_swap 2 1 4 3 | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m 2 3 1 4\033[0m\n"
-./push_swap 2 3 1 4 | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m 2 3 4 1\033[0m\n"
-./push_swap 2 3 4 1 | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m 2 4 1 3\033[0m\n"
-./push_swap 2 4 1 3 | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m 2 4 3 1\033[0m\n"
-./push_swap 2 4 3 1 | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m 3 1 2 4\033[0m\n"
-./push_swap 3 1 2 4 | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m 3 1 4 2\033[0m\n"
-./push_swap 3 1 4 2 | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m 3 2 1 4\033[0m\n"
-./push_swap 3 2 1 4 | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m 3 2 4 1\033[0m\n"
-./push_swap 3 2 4 1 | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m 3 4 1 2\033[0m\n"
-./push_swap 3 4 1 2 | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m 3 4 2 1\033[0m\n"
-./push_swap 3 4 2 1 | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m 4 1 2 3\033[0m\n"
-./push_swap 4 1 2 3 | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m 4 1 3 2\033[0m\n"
-./push_swap 4 1 3 2 | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m 4 2 1 3\033[0m\n"
-./push_swap 4 2 1 3 | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m 4 2 3 1\033[0m\n"
-./push_swap 4 2 3 1 | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m 4 3 1 2\033[0m\n"
-./push_swap 4 3 1 2 | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m 4 3 2 1\033[0m\n"
-./push_swap 4 3 2 1 | wc -l
+
 
 # TEST FOR 5
 printf "\n\n\e[1;94m------TESTING FOR 5 DIGITS------\e[0m\n\n"
@@ -115,16 +78,6 @@ printf "\033[1;31mThis is the test  with : \033[0;32m 9 5 4 10 8 6 2 7 1 3 11 12
 ./push_swap 9 5 4 10 8 6 2 7 1 3 11 12 | wc -l
 printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 12 numbers \033[0m\n"
 ARG=`ruby -e "puts (10..21).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 12 numbers \033[0m\n"
-ARG=`ruby -e "puts (10..21).to_a.shuffle.join(' ')"`; ./push_swap $ARG  | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 12 numbers \033[0m\n"
-ARG=`ruby -e "puts (10..21).to_a.shuffle.join(' ')"`; ./push_swap $ARG  | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 12 numbers \033[0m\n"
-ARG=`ruby -e "puts (10..21).to_a.shuffle.join(' ')"`; ./push_swap $ARG  | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 12 numbers \033[0m\n"
-ARG=`ruby -e "puts (10..21).to_a.shuffle.join(' ')"`; ./push_swap $ARG  | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 12 numbers \033[0m\n"
-ARG=`ruby -e "puts (10..21).to_a.shuffle.join(' ')"`; ./push_swap $ARG  | wc -l
 printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 12 numbers \033[0m\n"
 ARG=`ruby -e "puts (10..21).to_a.shuffle.join(' ')"`; ./push_swap $ARG  | wc -l
 printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 12 numbers \033[0m\n"
@@ -197,6 +150,10 @@ printf "\033[1;31mThis is the test  with : \033[0;32m1\033[0m\n"
 ./push_swap 1
 printf "\033[1;31mThis is the test with : \033[0;32mnothing\033[0m\n\n"
 ./push_swap
+printf "\033[1;31mThis is the test with 2 numbers in order: \033[0;32mnothing\033[0m\n\n"
+./push_swap 1 2 
+printf "\033[1;31mThis is the test with 3 numbers in order: \033[0;32mnothing\033[0m\n\n"
+./push_swap 1 2 3
 printf "\033[1;31mThis is the test with numbers already in order : \033[0;32m10 20 30 40 50\033[0m\n"
 ./push_swap 10 20 30 40 50
 printf "\033[1;31mThis is the test with number already in order (string) : \033[0;32m'10 20 30 40 50'\033[0m\n"

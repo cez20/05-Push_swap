@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 15:45:01 by cezmenji          #+#    #+#             */
-/*   Updated: 2022/04/19 18:20:38 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/20 09:46:44 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,15 @@ void	indexing(int len, t_node *lst)
 int	is_sorted(t_node *node)
 {
 	if (node->index != 1)
-		return (0);
+		return (1);
 	while (node->next)
 	{
 		if (node->data < node->next->data)
 			node = node->next;
 		else
-			return (0);
+			return (1);
 	}
-	return (1);
+	return (0);
 }
 
 void	bubble_sort(int *tab, int size)

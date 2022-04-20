@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 20:51:45 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/19 18:24:52 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/20 09:47:29 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	quick_sort(t_stacks *s, int len)
 
 	top_a = 0;
 	first_sort(s, len, &top_a);
-	while ((is_sorted(s->stack_a->head) != 1))
+	while ((is_sorted(s->stack_a->head) != 0))
 	{
 		push_chunk(s, &top_a);
 		while (s->stack_b->head)
@@ -97,7 +97,7 @@ void	selection_sort1(t_stacks *s, int len)
 		push_a(s->stack_b, s->stack_a);
 		len--;
 	}
-	if (s->stack_a->head->index == 1 && is_sorted(s->stack_a->head) != 1)
+	if (s->stack_a->head->index == 1 && is_sorted(s->stack_a->head) != 0)
 		rotate_a(s->stack_a);
 }
 
