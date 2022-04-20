@@ -6,7 +6,7 @@
 #    By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/28 13:59:50 by cemenjiv          #+#    #+#              #
-#    Updated: 2022/04/10 12:08:21 by cemenjiv         ###   ########.fr        #
+#    Updated: 2022/04/19 19:35:47 by cemenjiv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@ SRCS			=	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c \
 					ft_putnbr_fd.c ft_split.c 
 
 OBJS			= $(SRCS:.c=.o)
+
+HEADER			= libft.h
 
 BONUS			= ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
 				  ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c

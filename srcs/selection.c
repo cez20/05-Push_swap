@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 15:24:18 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/19 18:34:06 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/19 20:13:27 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,26 +33,24 @@ void	selection_sort(t_stacks *s, int len)
 		push_b(s->stack_a, s->stack_b);
 		len--;
 	}
-	sort_three(s);
+	sort_three(s->stack_a);
 	while (s->stack_b->head != NULL)
 		push_a(s->stack_b, s->stack_a);
 }
 
-void	sort_three(t_stacks *s)
+void	sort_three(t_stack *stack)
 {
-	t_node	*temp;
 	int		big;
 	int		small;
 
-	temp = s->stack_a->head;
-	small = smallest_nb(s->stack_a);
-	big = biggest_nb(s->stack_a);
-	if (temp->index == big)
-		rotate_a(s->stack_a);
-	else if (temp->next->index == big)
-		reverse_rotate_a(s->stack_a);
-	if (temp->next->index == small && s->stack_a->tail->index == big)
-		swap_a(s->stack_a);
+	small = smallest_nb(stack);
+	big = biggest_nb(stack);
+	if (stack->head->index == big)
+		rotate_a(stack);
+	else if (stack->head->next->index == big)
+		reverse_rotate_a(stack);
+	if (stack->head->next->index == small && stack->tail->index == big)
+		swap_a(stack);
 }
 
 int	which_half(t_stack *stack, int small)

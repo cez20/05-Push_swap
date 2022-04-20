@@ -6,18 +6,18 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:04:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/19 18:21:17 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/19 20:12:22 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft/libft.h"
 # include <limits.h> 
 # include <unistd.h>
 # include <stdlib.h> 
-# include <stdio.h>  
+# include <stdio.h>
+# include "../libft/libft.h"
 
 typedef struct s_node
 {
@@ -79,7 +79,7 @@ void		push_b(t_stack *stack_a, t_stack *stack_b);
 
 // *** SELECTION.C ***
 void		selection_sort(t_stacks *s, int len);
-void		sort_three(t_stacks *s);
+void		sort_three(t_stack *stack);
 int			which_half(t_stack *stack, int small);
 int			smallest_nb(t_stack *stack);
 int			biggest_nb(t_stack *stack);
