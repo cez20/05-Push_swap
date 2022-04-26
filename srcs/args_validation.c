@@ -6,13 +6,13 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 20:06:50 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/25 22:26:03 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/25 23:42:25 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	args_validation(char **argv)
+char	**args_validation(char **argv)
 {
 	char	**args;
 	
@@ -21,6 +21,7 @@ void	args_validation(char **argv)
 		args = ft_split(argv[1], ' ');
 	check_duplicate(args, 0);
 	check_if_int(args, 0);
+	return (args);
 }
 
 void	check_duplicate(char **argv, int i)

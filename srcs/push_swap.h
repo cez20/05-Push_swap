@@ -6,18 +6,18 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:04:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/19 20:14:07 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/26 01:33:35 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft/libft.h"
 # include <limits.h> 
 # include <unistd.h>
 # include <stdlib.h> 
-# include <stdio.h>  
+# include <stdio.h>
+# include "libft/libft.h"
 
 typedef struct s_node
 {
@@ -47,7 +47,6 @@ t_stacks	*create_stacks(void);
 void		free_stacks(t_stacks *stacks);
 
 // *** ARGS_VALIDATION.C ***
-void		args_validation(char **argv);
 void		check_duplicate(char **argv, int i);
 void		check_if_int(char **str, int i);
 long		ft_atol(const char *str);

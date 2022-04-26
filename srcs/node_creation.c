@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:36:43 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/12 22:04:22 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/26 00:27:28 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,23 @@ void	create_nodes(t_stack *stack_a, char **argv)
 {
 	t_node	*temp;
 	char	**args;
-	int		i;
-	int		j;
-
+	int 	i;
+	int 	j;
+	
 	i = 1;
 	j = 0;
 	args = &argv[i];
 	if (ft_strchr1(argv[i], ' ') == 0)
 		args = ft_split(argv[i++], ' ');
+	check_duplicate(args, 0);
+	check_if_int(args, 0);
 	while (args[j])
 	{
 		temp = node_new(ft_atoi(args[j++]));
 		node_add_back(&stack_a->head, temp);
 	}
 	stack_a->tail = node_last(stack_a->head);
-	free_args(args, i, j);
+	free_args (args, i, j);
 }
 
 t_node	*node_new(int data)

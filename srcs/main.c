@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:36:43 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/25 22:18:47 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/26 00:26:36 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@ int	main(int argc, char **argv)
 	t_stacks	*stacks;
 	int			len;
 
-	stacks = NULL;
 	if (argc >= 2)
 	{
-		args_validation(argv);
 		stacks = create_stacks();
 		create_nodes(stacks->stack_a, argv);
 		len = nodes_len(stacks->stack_a->head);
