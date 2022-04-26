@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 14:04:51 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/26 01:33:35 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/26 17:10:07 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h> 
 # include <stdio.h>
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 typedef struct s_node
 {
@@ -62,7 +62,6 @@ void		free_args(char **args, int i, int j);
 // *** NODE_UTILS.C ***
 int			nodes_len(t_node *lst);
 void		node_deletion(t_stack *stack);
-void		print_node(t_node *head);
 
 // *** OPERATIONS_A.C ***
 void		swap_a(t_stack *stack);

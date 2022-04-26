@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:14:13 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/19 18:24:05 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/26 17:09:53 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,4 @@ void	node_deletion(t_stack *stack)
 		free(stack->head);
 		stack->head = temp;
 	}
-}
-
-void	print_node(t_node *head)
-{
-	int	i;
-
-	i = 1;
-	printf("NUMBERS		INDEX\n");
-	while (head != NULL)
-	{
-		printf("%d		[%d]\n", head->data, head->index);
-		head = head->next;
-		i++;
-	}
-	printf("\n");
 }

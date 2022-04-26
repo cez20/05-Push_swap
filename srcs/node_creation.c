@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:36:43 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/26 00:27:28 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/26 15:18:57 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	create_nodes(t_stack *stack_a, char **argv)
 {
 	t_node	*temp;
 	char	**args;
-	int 	i;
-	int 	j;
-	
+	int		i;
+	int		j;
+
 	i = 1;
 	j = 0;
 	args = &argv[i];

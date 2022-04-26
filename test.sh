@@ -16,6 +16,9 @@ printf ${YELLOW}"This text is in YELLOW: ${YELLOW}2000 1000"${RESET}
 printf "\n\n\e[1;94m------COMPILING THE PROGRAM-----\e[0m\n\n"
 make 
 
+# TESTING WITH PYTHON VISUALIZER
+# python3 pyviz.py `ruby -e "puts (1..100).to_a.shuffle.join(' ')"`
+
 #TESTING FOR "NO OUTPUT ON SCREEN"
 printf "\n\n\e[1;94m------TESTING FOR NO OUTPUT ON SCREEN------\e[0m\n\n"
 printf "\033[1;31mThis is the test with NO INPUT: \033[0;32mnothing\033[0m\n\n"
@@ -213,37 +216,36 @@ printf "\033[1;31mThis is the test with symbol '.' in a string : \033[0;32m'10 2
 #TESTING FOR MEMORY LEAKS
 printf "\n\n\e[1;94m------TESTING FOR MEMORY LEAKS------\e[0m\n\n"
 printf "\033[1;31mThis is the test  with :\033[0;32m 1  \033[0m\n"
-leaks -atExit -- ./push_swap 1 | grep 'leaked bytes' 
+leaks -atExit -- ./push_swap 1 2 | awk '/leaked bytes/ {print; exit}'
 printf "\033[1;31mThis is the test  with :\033[0;32m '1' \033[0m\n"
-leaks -atExit -- ./push_swap "1" | grep 'leaked bytes' 
+leaks -atExit -- ./push_swap "1" | awk '/leaked bytes/ {print; exit}'
 printf "\033[1;31mThis is the test  with :\033[0;32m 1 2 \033[0m\n"
-leaks -atExit -- ./push_swap 1 2 | grep 'leaked bytes' 
+leaks -atExit -- ./push_swap 1 2 | awk '/leaked bytes/ {print; exit}'
 printf "\033[1;31mThis is the test  with : \033[0;32m '1 2' in order \033[0m\n"
-leaks -atExit -- ./push_swap "1 2" | grep 'leaked bytes' 
+leaks -atExit -- ./push_swap "1 2" | awk '/leaked bytes/ {print; exit}' 
 printf "\033[1;31mThis is the test  with \033[0;32m '2 1'\033[0m\n"
-leaks -atExit -- ./push_swap "2 1" | grep 'leaked bytes' 
+leaks -atExit -- ./push_swap "2 1" | awk '/leaked bytes/ {print; exit}'
 printf "\033[1;31mThis is the test  with \033[0;32m 1 2 3\033[0m\n"
-leaks -atExit -- ./push_swap 1 2 3 | grep 'leaked bytes' 
+leaks -atExit -- ./push_swap 1 2 3 | awk '/leaked bytes/ {print; exit}' 
 printf "\033[1;31mThis is the test  with : \033[0;32m '1 2 3' \033[0m\n"
-leaks -atExit -- ./push_swap "1 2 3" | grep 'leaked bytes' 
+leaks -atExit -- ./push_swap "1 2 3" | awk '/leaked bytes/ {print; exit}' 
 printf "\033[1;31mThis is the test  with : \033[0;32m '3 1 2' \033[0m\n"
-leaks -atExit -- ./push_swap "3 1 2" | grep 'leaked bytes' 
+leaks -atExit -- ./push_swap "3 1 2" | awk '/leaked bytes/ {print; exit}' 
 printf "\033[1;31mThis is the test  with : \033[0;32m -14 38 1 156 49 \033[0m\n"
-leaks -atExit -- ./push_swap -14 38 1 156 49 | grep 'leaked bytes'
+leaks -atExit -- ./push_swap -14 38 1 156 49 | awk '/leaked bytes/ {print; exit}'
 printf "\033[1;31mThis is the test  with : \033[0;32m '-14 38 1 156 49' \033[0m\n"
-leaks -atExit -- ./push_swap "-14 38 1 156 49" | grep 'leaked bytes' 
+leaks -atExit -- ./push_swap "-14 38 1 156 49" | awk '/leaked bytes/ {print; exit}'
 printf "\033[1;31mThis is the test  with : \033[0;32m 'RANDOMIZER with 5 numbers' \033[0m\n"
-ARG=`ruby -e "puts (1..5).to_a.shuffle.join(' ')"`; leaks -atExit -- ./push_swap $ARG | grep 'leaked bytes' 
+ARG=`ruby -e "puts (1..5).to_a.shuffle.join(' ')"`; leaks -atExit -- ./push_swap $ARG | awk '/leaked bytes/ {print; exit}'
 printf "\033[1;31mThis is the test  with : \033[0;32m 1 14 10 5 3 18 2 19 12 11 9 15 13 20 7 6 17 16 4 8 \033[0m\n"
-leaks -atExit -- ./push_swap 1 14 10 5 3 18 2 19 12 11 9 15 13 20 7 6 17 16 4 8 | grep 'leaked bytes'
+leaks -atExit -- ./push_swap 1 14 10 5 3 18 2 19 12 11 9 15 13 20 7 6 17 16 4 8 | awk '/leaked bytes/ {print; exit}'
 printf "\033[1;31mThis is the test  with : \033[0;32m '1 14 10 5 3 18 2 19 12 11 9 15 13 20 7 6 17 16 4 8' \033[0m\n"
-leaks -atExit -- ./push_swap "1 14 10 5 3 18 2 19 12 11 9 15 13 20 7 6 17 16 4 8" | grep 'leaked bytes' 
+leaks -atExit -- ./push_swap "1 14 10 5 3 18 2 19 12 11 9 15 13 20 7 6 17 16 4 8" | awk '/leaked bytes/ {print; exit}' 
 printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 20 numbers \033[0m\n"
-ARG=`ruby -e "puts (1..20).to_a.shuffle.join(' ')"`; leaks -atExit -- ./push_swap $ARG | grep 'leaked bytes' 
+ARG=`ruby -e "puts (1..20).to_a.shuffle.join(' ')"`; leaks -atExit -- ./push_swap $ARG | awk '/leaked bytes/ {print; exit}' 
 printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 100 numbers \033[0m\n"
-ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`; leaks -atExit -- ./push_swap $ARG | grep 'leaked bytes'
+ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`; leaks -atExit -- ./push_swap $ARG | awk '/leaked bytes/ {print; exit}'
 printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 500 numbers \033[0m\n"
-ARG=`ruby -e "puts (1..500).to_a.shuffle.join(' ')"`; leaks -atExit -- ./push_swap $ARG | grep 'leaked bytes'
-
+ARG=`ruby -e "puts (1..500).to_a.shuffle.join(' ')"`; leaks -atExit -- ./push_swap $ARG | awk '/leaked bytes/ {print; exit}'
 
 printf "\n\n\e[1;94m------END OF TESTS------\e[0m\n\n"
