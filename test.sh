@@ -61,12 +61,12 @@ printf "\033[1;31mThis is the test  with : \033[0;32m 5 4 2 3 1\033[0m\n"
 ./push_swap 5 4 2 3 1 | wc -l
 printf "\033[1;31mThis is the test  with : \033[0;32m \"5 4 2 3 1\"\033[0m\n"
 ./push_swap "5 4 2 3 1" | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER \033[0m\n"
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 5 numbers\033[0m\n"
 ARG=`ruby -e "puts (10..14).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER \033[0m\n"
-ARG=`ruby -e "puts (10..14).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
-printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER \033[0m\n"
-ARG=`ruby -e "puts (10..14).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 5 numbers\033[0m\n"
+ARG=`ruby -e "puts (0..4).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 5 numbers\033[0m\n"
+ARG=`ruby -e "puts (5..9).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
 
 # # TEST FOR 12 digits and more
 printf "\n\n\e[1;94m------TESTING FOR 12 and + DIGITS------\e[0m\n\n"
@@ -189,8 +189,12 @@ printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 10 numbers
 ARG=`ruby -e "puts (1..10).to_a.shuffle.join(' ')"`; leaks -atExit -- ./push_swap $ARG 
 printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 10 numbers \033[0m\n"
 ARG=`ruby -e "puts (1..10).to_a.shuffle.join(' ')"`; leaks -atExit -- ./push_swap $ARG 
-printf "\033[1;31mThis is the test  with \033[0;32m: 1 2\033[0m\n"
-leaks -atExit -- ./push_swap 1 2
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 100 numbers \033[0m\n"
+ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`; leaks -atExit -- ./push_swap $ARG 
+printf "\033[1;31mThis is the test  with : \033[0;32m RANDOMIZER with 500 numbers \033[0m\n"
+ARG=`ruby -e "puts (1..500).to_a.shuffle.join(' ')"`; leaks -atExit -- ./push_swap $ARG 
+printf "\033[1;31mThis is the test  with \033[0;32m:1 2 \033[0m\n"
+leaks -atExit -- ./push_swap 1 2 
 printf "\033[1;31mThis is the test  with \033[0;32m:1 2 3\033[0m\n"
 leaks -atExit -- ./push_swap 1 2 3
 

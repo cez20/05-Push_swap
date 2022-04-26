@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 15:24:18 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/19 20:13:27 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/25 20:34:11 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	selection_sort(t_stacks *s, int len)
 				rotate_a(s->stack_a);
 			else if (nb_location >= (len / 2))
 				reverse_rotate_a(s->stack_a);
-			if (is_sorted(s->stack_a->head) == 1)
+			if (is_sorted(s->stack_a->head) == 0)
 				return ;
 		}
 		push_b(s->stack_a, s->stack_b);

@@ -6,7 +6,7 @@
 /*   By: cemenjiv <cemenjiv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 20:06:50 by cemenjiv          #+#    #+#             */
-/*   Updated: 2022/04/19 22:19:41 by cemenjiv         ###   ########.fr       */
+/*   Updated: 2022/04/25 22:26:03 by cemenjiv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	args_validation(char **argv)
 {
 	char	**args;
-
+	
 	args = &argv[1];
 	if (ft_strchr1(argv[1], ' ') == 0)
 		args = ft_split(argv[1], ' ');
