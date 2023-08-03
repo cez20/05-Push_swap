@@ -2,7 +2,7 @@
 
 Push_swap is data sorting algorithm project in which we must sort a list of random numbers with a limited set of instructions in the lowest number of actions.
 
-##= Usage
+## Usage
 
 Here are the instructions in order to compile the program
 
