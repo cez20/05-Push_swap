@@ -54,6 +54,6 @@ The project allowed the use of 2 stacks named a and b and a limited set of instr
 
 In order to get a visual representation of all the work done is the data sorting, use the [<u>push_swap visualizer</u>](https://github.com/o-reo/push_swap_visualizer)
 
-![](./images/push_swap.gif)
+![](images/push_swap.gif)
 
 # <img src="./images/push_swap_terminal.png"/>
