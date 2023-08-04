@@ -8,9 +8,9 @@ Here are the instructions in order to compile the program
 
 | Command | Usage |
 | --- | --- |
-| `make` | Compiles program and creates executable ./so_long
+| `make` | Compiles program and creates executable ./push_swap
 | `make clean` | Removes all object files (.o) of project and from libft
-| `make fclean` | Removes all objects files (.o), all .a along with executable ./so_long
+| `make fclean` | Removes all objects files (.o), all .a along with executable ./push_swap
 | `make re` | Removes all objects (.o) files and executable and recompiles them
 
 On MacOS, it is possible to use the ruby number generator and put its content inside a shell variable
