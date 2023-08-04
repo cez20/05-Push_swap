@@ -56,4 +56,4 @@ In order to get a visual representation of all the work done is the data sorting
 
 # <img src="./images/push_swap_terminal.png"/>
 
-![](images/push_swap.gif)
+# <img src="./images/push_swap.gif"/>
